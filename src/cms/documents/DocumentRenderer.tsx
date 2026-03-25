@@ -25,7 +25,7 @@ interface QuoteComponent {
 }
 
 interface PortableTextChildrenProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 interface PortableTextLinkMarkProps extends PortableTextChildrenProps {
