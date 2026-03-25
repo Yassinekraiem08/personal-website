@@ -29,7 +29,7 @@ interface PortableTextChildrenProps {
 }
 
 interface PortableTextLinkMarkProps extends PortableTextChildrenProps {
-  value: {
+  value?: {
     href: string;
   };
 }
@@ -133,7 +133,8 @@ const customComponents: PortableTextComponents = {
     number: ({ children }: PortableTextChildrenProps) => <li className="pl-1 leading-8">{children}</li>,
   },
   marks: {
-    link: ({ children, value: { href } }: PortableTextLinkMarkProps) => {
+    link: ({ children, value }: PortableTextLinkMarkProps) => {
+      const href = value?.href || '#';
       const target = !href.startsWith('/') ? '_blank' : undefined;
       return (
         <Link className="text-link" href={href} target={target}>
