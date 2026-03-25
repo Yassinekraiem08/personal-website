@@ -1,182 +1,110 @@
 import Fuse from 'fuse.js';
 import { ChangeEvent, useState } from 'react';
 
-import {
-  Accordion,
-  AccordionProps,
-  ActionIcon,
-  Box,
-  Divider,
-  Grid,
-  GridProps,
-  Group,
-  Modal,
-  Text,
-  TextInput,
-} from '@mantine/core';
-
 import Head from 'next/head';
-import NextImage from 'next/image';
+import Link from 'next/link';
 
 import { DocumentType, getAllForDocumentType } from '@/src/cms/client';
-import { urlForImage } from '@/src/cms/images';
 import PageContentBox from '@/src/components/PageContentBox';
-import StarryBackground,
-{
-  StarryBackgroundProps,
-}
-from '@/src/components/StarryBackground';
-import DownChevron from '@/src/icons/DownChevron.svg';
-import GridView from '@/src/icons/GridView.svg';
-import ListView from '@/src/icons/ListView.svg';
-import Search from '@/src/icons/Search.svg';
-import ProjectGridItem from '@/src/projects/ProjectGridItem';
-import ProjectListItem from '@/src/projects/ProjectListItem';
-import { ProjectEntry } from '@/src/types/project';
-import { getStarField } from '@/src/util/stars';
+import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
+import SectionHeading from '@/src/components/SectionHeading';
+import { siteConfig } from '@/src/config/site';
 import { DAYS } from '@/src/util/time';
 
-enum ProjectView {
-  List,
-  Grid,
-}
-
-interface ProjectsProps extends StarryBackgroundProps {
+interface ProjectsProps {
   projects: ProjectEntry[];
 }
 
-export default function Projects({ stars, projects }: ProjectsProps) {
-  const [currentProjects, setCurrentProjects] =
-    useState<ProjectEntry[]>(projects);
-  const [projectsFuse] = useState<Fuse<ProjectEntry>>(
-    new Fuse(projects, { keys: ['name', 'description', 'startYear'] })
+export default function Projects({ projects }: ProjectsProps) {
+  const [search, setSearch] = useState('');
+  const [currentProjects, setCurrentProjects] = useState<ProjectEntry[]>(projects);
+  const [projectsFuse] = useState(
+    new Fuse(projects, { keys: ['name', 'description', 'tools', 'startYear'] })
   );
-  const [projectView, setProjectView] = useState<ProjectView>(ProjectView.List);
-  const [search, setSearch] = useState<string>('');
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<Image | null>(null);
-  const Wrapper = projectView === ProjectView.List ? Accordion : Grid;
-  const wrapperProps =
-    projectView === ProjectView.List
-      ? { chevron: <DownChevron />, chevronSize: 40, variant: 'filled' }
-      : {};
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;
-    if (!value) {
-      setSearch(value);
-      setCurrentProjects(projects);
-      return;
-    }
     setSearch(value);
-    setCurrentProjects(projectsFuse.search(value).map((res) => res.item));
+    setCurrentProjects(
+      value
+        ? projectsFuse.search(value).map((result: Fuse.FuseResult<ProjectEntry>) => result.item)
+        : projects
+    );
   };
 
   return (
     <>
       <Head>
-        <title>Projects - Yassine Kraiem</title>
-        <meta name="description" content="Yassine Kraiem\'s Projects" />
+        <title>Projects | {siteConfig.name}</title>
+        <meta
+          name="description"
+          content="Selected projects by Yassine Kraiem across software engineering, AI systems, and product-focused builds."
+        />
       </Head>
-      <Modal
-        size="lg"
-        centered
-        opened={modalOpen}
-        onClose={setModalOpen.bind(null, false)}
-      >
-        {modalContent && (
-          <Box
-            bg="white"
-            pos="relative"
-            pt={`${
-              (1 / (modalContent.asset.metadata?.dimensions.aspectRatio || 1)) *
-              100
-            }%`}
-            sx={{ borderRadius: '5px' }}
-          >
-            <NextImage
-              placeholder="blur"
-              blurDataURL={modalContent.asset.metadata?.lqip}
-              src={urlForImage(modalContent.asset).url()}
-              alt={modalContent.alt}
-              fill
+      <main>
+        <PageContentBox>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              eyebrow="Projects"
+              title="A portfolio of technical builds with ambition behind them."
+              description="Projects spanning algorithm visualization, software systems, product experiments, and AI-oriented work."
             />
-          </Box>
-        )}
-      </Modal>
-      <PageContentBox>
-        <Grid>
-          <Grid.Col xs={12} sm={4} sx={{ height: '62px' }}>
-            <Group noWrap position="apart">
-              <Text
-                size="xl"
-                color="blue.2"
-                underline
-                fw="bold"
-                display="inline-block"
+            <div className="w-full max-w-md">
+              <label htmlFor="project-search" className="sr-only">
+                Search projects
+              </label>
+              <input
+                id="project-search"
+                type="text"
+                value={search}
+                onChange={handleSearchChange}
+                placeholder="Search by name, stack, or theme"
+                className="w-full rounded-full border border-white/10 bg-slate-950/70 px-5 py-3 text-sm text-white outline-none ring-0 transition placeholder:text-slate-500 focus:border-sky-300/35"
+              />
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
+              {projects.length} total projects
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
+              AI systems
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
+              Software engineering
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
+              Product thinking
+            </span>
+          </div>
+
+          {currentProjects.length ? (
+            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              {currentProjects.map((project, idx) => (
+                <ProjectShowcaseCard
+                  key={project._id}
+                  project={project}
+                  priority={idx < 2}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-10 rounded-[28px] border border-white/10 bg-white/[0.04] p-8 text-center">
+              <p className="text-lg font-medium text-white">No matching projects.</p>
+              <p className="mt-3 text-sm leading-7 text-slate-400">
+                Try a different keyword or browse the full portfolio.
+              </p>
+              <Link
+                href="/projects"
+                className="mt-6 inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
               >
-                Projects
-              </Text>
-              <Box>
-                <ActionIcon
-                  onClick={setProjectView.bind(null, ProjectView.List)}
-                  mr="10px"
-                  display="inline-block"
-                  color="blue"
-                  size={42}
-                  variant={
-                    projectView === ProjectView.List ? 'filled' : 'light'
-                  }
-                >
-                  <ListView />
-                </ActionIcon>
-                <ActionIcon
-                  onClick={setProjectView.bind(null, ProjectView.Grid)}
-                  display="inline-block"
-                  color="blue"
-                  size={42}
-                  variant={
-                    projectView === ProjectView.Grid ? 'filled' : 'light'
-                  }
-                >
-                  <GridView />
-                </ActionIcon>
-              </Box>
-            </Group>
-          </Grid.Col>
-          <Grid.Col xs={12} sm={8} sx={{ height: '62px' }}>
-            <TextInput
-              maw="300px"
-              m="6px auto 0 auto"
-              placeholder="Search..."
-              rightSection={<Search />}
-              value={search}
-              onChange={handleSearchChange}
-            />
-          </Grid.Col>
-        </Grid>
-        <Divider m="15px 0" color="blue" />
-        <Wrapper {...(wrapperProps as AccordionProps & GridProps)}>
-          {currentProjects.map((project) =>
-            projectView === ProjectView.List ? (
-              <ProjectListItem
-                key={project.slug.current}
-                setModalOpen={setModalOpen}
-                setModalContent={setModalContent}
-                {...project}
-              />
-            ) : (
-              <ProjectGridItem
-                key={project.slug.current}
-                setModalOpen={setModalOpen}
-                setModalContent={setModalContent}
-                {...project}
-              />
-            )
+                Reset search
+              </Link>
+            </div>
           )}
-        </Wrapper>
-      </PageContentBox>
-      <StarryBackground stars={stars} />
+        </PageContentBox>
+      </main>
     </>
   );
 }
@@ -193,7 +121,6 @@ export async function getStaticProps() {
   return {
     props: {
       projects,
-      stars: getStarField(350),
     },
     revalidate: 3 * DAYS,
   };

@@ -1,16 +1,20 @@
-interface CMSDocument {
-  _id: string;
-  _type: string;
+declare global {
+  interface CMSDocument {
+    _id: string;
+    _type: string;
+  }
+
+  interface Slug {
+    _type: string;
+    current: string;
+  }
+
+  interface Asset {
+    _ref?: string;
+    _type: string;
+    _id?: string;
+    metadata?: ImageMetadata;
+  }
 }
 
-interface Slug {
-  _type: string;
-  current: string;
-}
-
-interface Asset {
-  _ref?: string;
-  _type: string;
-  _id?: string;
-  metadata?: ImageMetadata;
-}
+export {};

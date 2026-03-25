@@ -1,20 +1,7 @@
-import { useState } from 'react';
-
-import { Carousel } from '@mantine/carousel';
-import {
-  Badge,
-  Box,
-  Grid,
-  LoadingOverlay,
-  Modal,
-  Text,
-  Title,
-} from '@mantine/core';
-
-import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import NextImage from 'next/image';
+import Link from 'next/link';
+import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 
 import {
@@ -25,162 +12,142 @@ import {
 import DocumentRenderer from '@/src/cms/documents/DocumentRenderer';
 import { urlForImage } from '@/src/cms/images';
 import PageContentBox from '@/src/components/PageContentBox';
-import StarryBackground, {
-  StarryBackgroundProps,
-} from '@/src/components/StarryBackground';
-import { ProjectEntry } from '@/src/types/project';
-import { getStarField } from '@/src/util/stars';
+import { siteConfig } from '@/src/config/site';
 
-interface ProjectProps extends StarryBackgroundProps {
+interface ProjectProps {
   project: ProjectEntry;
 }
 
-export default function Project({ project, stars }: ProjectProps) {
+export default function Project({ project }: ProjectProps) {
   const router = useRouter();
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<Image | null>(null);
 
-  const title = !router.isFallback
-    ? `Project: ${project.name}`
-    : 'Yassine Kraiem - Project';
+  if (router.isFallback) {
+    return (
+      <main>
+        <PageContentBox>
+          <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-10 text-center text-slate-300">
+            Loading project...
+          </div>
+        </PageContentBox>
+      </main>
+    );
+  }
+
   return (
     <>
-      {!router.isFallback && (
-        <Head>
-          <title>{title}</title>
-          <meta
-            name="description"
-            content={`A project by Yassine Kraiem named ${project.name}`}
-          />
-        </Head>
-      )}
-      <Modal
-        size="lg"
-        centered
-        opened={modalOpen}
-        onClose={setModalOpen.bind(null, false)}
-      >
-        {modalContent && (
-          <Box
-            pos="relative"
-            pt={`${
-              (1 / (modalContent.asset.metadata?.dimensions.aspectRatio || 1)) *
-              100
-            }%`}
-            bg="white"
-            sx={{ borderRadius: '5px' }}
-          >
-            <NextImage
-              placeholder="blur"
-              blurDataURL={modalContent.asset.metadata?.lqip}
-              src={urlForImage(modalContent.asset).url()}
-              alt={modalContent.alt}
-              fill
-            />
-          </Box>
-        )}
-      </Modal>
-      <PageContentBox>
-        <LoadingOverlay visible={router.isFallback} />
-        {!router.isFallback && (
-          <>
-            <Grid>
-              <Grid.Col xs={12} md={7}>
-                <Title fw="bold" underline>
-                  {project.name}
-                </Title>
-                <Box mt="12px">
-                  {project.tools.map((tool) => (
-                    <Badge
-                      mr="5px"
-                      mt="5px"
-                      variant="filled"
-                      color="blue.6"
-                      size="lg"
-                      key={tool}
-                    >
-                      {tool}
-                    </Badge>
-                  ))}
-                </Box>
-                <Text mt="15px" size="lg" color="blue.1">
-                  Started {project.startYear}
-                </Text>
-              </Grid.Col>
-              <Grid.Col pos="relative" xs={12} md={5}>
-                <Box pos="relative" w="100%" pt="50%" mb="15px">
-                  <Image
-                    style={{ borderRadius: '5px' }}
-                    placeholder="blur"
-                    blurDataURL={project.mainImage.asset.metadata?.lqip}
-                    src={urlForImage(project.mainImage.asset).url()}
-                    alt={project.mainImage.alt}
-                    fill
-                    sizes="(min-width: 768px) 75vw,
-                    (win-width: 576px) 90vw,
-                    100vw"
-                  />
-                </Box>
-              </Grid.Col>
-            </Grid>
-            <DocumentRenderer document={project.body} />
-          </>
-        )}
-        {project?.images?.length && (
-          <>
-            <Text size="xl" color="blue.2" ta="center" mb="10px">
-              Pictures
-            </Text>
-            <Carousel
-              height={250}
-              slideSize="33.333333%"
-              slideGap="sm"
-              breakpoints={[
-                { maxWidth: 'md', slideSize: '50%' },
-                { maxWidth: 'sm', slideSize: '100%', slideGap: 0 },
-              ]}
-              controlSize={34}
-              align="start"
-            >
-              {project.images.map((image, idx) => (
-                <Carousel.Slide key={`${image.asset._ref}_${idx}`}>
-                  <Box
-                    pos="relative"
-                    h="250px"
-                    w="100%"
-                    bg="white"
-                    sx={{
-                      borderRadius: '5px',
-                      overflow: 'hidden',
-                      '&:hover': {
-                        cursor: 'pointer',
-                        opacity: 0.85,
-                      },
-                    }}
-                    onClick={() => {
-                      setModalContent(image);
-                      setModalOpen(true);
-                    }}
+      <Head>
+        <title>{project.name} | {siteConfig.name}</title>
+        <meta
+          name="description"
+          content={`Project detail page for ${project.name} by ${siteConfig.name}.`}
+        />
+      </Head>
+      <main>
+        <PageContentBox>
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-300/80">
+                Project
+              </p>
+              <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                {project.name}
+              </h1>
+              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
+                {project.description}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-2">
+                {project.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-slate-200"
                   >
-                    <Image
-                      placeholder="blur"
-                      blurDataURL={image.asset.metadata?.lqip}
-                      src={urlForImage(image.asset).height(250).url()}
-                      alt={image.alt}
-                      sizes="(min-width: 768px) 25vw,
-                      (win-width: 576px) 33vw,
-                      100vw"
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </Box>
-                </Carousel.Slide>
-              ))}
-            </Carousel>
-          </>
-        )}
-      </PageContentBox>
-      <StarryBackground stars={stars} />
+                    {tool}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <span className="rounded-full border border-white/10 bg-slate-950/60 px-4 py-2 text-sm text-slate-300">
+                  Started {project.startYear}
+                </span>
+                <Link
+                  href="/projects"
+                  className="rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+                >
+                  Back to projects
+                </Link>
+                {project.links?.map((link) => (
+                  <Link
+                    key={link}
+                    href={link}
+                    target="_blank"
+                    className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+                  >
+                    Open link
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative aspect-[16/11] overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.04]">
+              <Image
+                placeholder="blur"
+                blurDataURL={project.mainImage.asset.metadata?.lqip}
+                src={urlForImage(project.mainImage.asset).url()}
+                alt={project.mainImage.alt || project.name}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+            </div>
+          </div>
+
+          {project.body?.length ? (
+            <div className="mt-14 rounded-[28px] border border-white/10 bg-slate-950/45 p-6 sm:p-8">
+              <DocumentRenderer document={project.body} />
+            </div>
+          ) : null}
+
+          {project.images?.length ? (
+            <div className="mt-14">
+              <div className="mb-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-300/80">
+                  Gallery
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-semibold text-white">
+                  Supporting visuals
+                </h2>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                {project.images.map((image, idx) => (
+                  <div
+                    key={`${image.asset._ref}_${idx}`}
+                    className="overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-3"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[22px]">
+                      <Image
+                        placeholder="blur"
+                        blurDataURL={image.asset.metadata?.lqip}
+                        src={urlForImage(image.asset).url()}
+                        alt={image.alt || project.name}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 768px) 45vw, 100vw"
+                      />
+                    </div>
+                    {image.caption ? (
+                      <p className="px-2 pb-1 pt-4 text-sm text-slate-400">
+                        {image.caption}
+                      </p>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </PageContentBox>
+      </main>
     </>
   );
 }
@@ -215,7 +182,6 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
   return {
     props: {
       project,
-      stars: getStarField(350),
     },
   };
 }

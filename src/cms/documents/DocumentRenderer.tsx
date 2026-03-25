@@ -1,13 +1,9 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { PortableTextBlock } from '@portabletext/types';
-
-import { Blockquote, Box, List, Text, Title } from '@mantine/core';
-
-import NextImage from 'next/image';
+import { ReactNode } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
-import ImageContainer, { ImageType } from '@/src/cms/documents/ImageContainer';
-import ListContainer from '@/src/cms/documents/ListContainer';
 import { urlForImage } from '@/src/cms/images';
 
 interface DocumentRendererProps {
@@ -28,119 +24,119 @@ interface QuoteComponent {
   value: Quote;
 }
 
+interface PortableTextChildrenProps {
+  children: ReactNode;
+}
+
+interface PortableTextLinkMarkProps extends PortableTextChildrenProps {
+  value: {
+    href: string;
+  };
+}
+
 const customComponents: PortableTextComponents = {
   types: {
-    fullWidthImage: ({
-      value: { asset, alt, floatRight, caption },
-    }: ImageComponent) => {
+    fullWidthImage: ({ value: { asset, alt, caption } }: ImageComponent) => {
       const aspectRatio = asset.metadata?.dimensions.aspectRatio || 1;
       return (
-        <>
-          <ImageContainer
-            floatRight={floatRight}
-            type={ImageType.FullWidthImage}
-            aspectRatio={1 / aspectRatio}
-            caption={caption}
+        <figure className="my-10 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-3">
+          <div
+            className="relative overflow-hidden rounded-[22px]"
+            style={{ paddingTop: `${(1 / aspectRatio) * 100}%` }}
           >
-            <NextImage
+            <Image
               placeholder="blur"
               blurDataURL={asset.metadata?.lqip}
-              sizes="(min-width: 768px) 75vw,
-                (win-width: 576px) 90vw,
-                100vw"
+              sizes="(min-width: 1024px) 70vw, 100vw"
               src={urlForImage(asset).url()}
               alt={alt}
               fill
+              className="object-cover"
             />
-          </ImageContainer>
-        </>
+          </div>
+          {caption ? (
+            <figcaption className="px-2 pb-1 pt-4 text-sm text-slate-400">
+              {caption}
+            </figcaption>
+          ) : null}
+        </figure>
       );
     },
-    halfWidthImage: ({
-      value: { asset, alt, floatRight, caption },
-    }: ImageComponent) => {
+    halfWidthImage: ({ value: { asset, alt, floatRight, caption } }: ImageComponent) => {
       const aspectRatio = asset.metadata?.dimensions.aspectRatio || 1;
       return (
-        <>
-          <ImageContainer
-            floatRight={floatRight}
-            type={ImageType.HalfWidthImage}
-            aspectRatio={1 / aspectRatio}
-            caption={caption}
-          >
-            <NextImage
-              placeholder="blur"
-              blurDataURL={asset.metadata?.lqip}
-              sizes="(min-width: 768px) 50vw,
-                (win-width: 576px) 75vw,
-                100vw"
-              src={urlForImage(asset).url()}
-              alt={alt}
-              fill
-            />
-          </ImageContainer>
-        </>
-      );
-    },
-    fullWidthQuote: ({ value: { citation, quote } }: QuoteComponent) => {
-      return <Blockquote cite={`- ${citation}`}>{quote}</Blockquote>;
-    },
-    halfWidthQuote: ({
-      value: { citation, quote, floatRight },
-    }: QuoteComponent) => {
-      return (
-        <Box
-          w="50%"
-          sx={{
-            float: floatRight ? 'right' : 'left',
-            '@media (max-width: 576px)': {
-              width: '100%',
-            },
-          }}
+        <figure
+          className={`my-8 w-full overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] p-3 lg:w-[48%] ${
+            floatRight ? 'lg:float-right lg:ml-6' : 'lg:float-left lg:mr-6'
+          }`}
         >
-          <Blockquote cite={`- ${citation}`}>{quote}</Blockquote>
-        </Box>
+          <div
+            className="relative overflow-hidden rounded-[18px]"
+            style={{ paddingTop: `${(1 / aspectRatio) * 100}%` }}
+          >
+            <Image
+              placeholder="blur"
+              blurDataURL={asset.metadata?.lqip}
+              sizes="(min-width: 1024px) 38vw, 100vw"
+              src={urlForImage(asset).url()}
+              alt={alt}
+              fill
+              className="object-cover"
+            />
+          </div>
+          {caption ? (
+            <figcaption className="px-1 pb-1 pt-3 text-sm text-slate-400">
+              {caption}
+            </figcaption>
+          ) : null}
+        </figure>
       );
     },
+    fullWidthQuote: ({ value: { citation, quote } }: QuoteComponent) => (
+      <blockquote className="my-8 rounded-[28px] border border-sky-300/15 bg-sky-300/[0.06] px-6 py-6 text-lg leading-8 text-slate-100">
+        <p>{quote}</p>
+        <footer className="mt-4 text-sm text-slate-400">- {citation}</footer>
+      </blockquote>
+    ),
+    halfWidthQuote: ({ value: { citation, quote, floatRight } }: QuoteComponent) => (
+      <blockquote
+        className={`my-8 w-full rounded-[24px] border border-sky-300/15 bg-sky-300/[0.06] px-6 py-6 text-base leading-7 text-slate-100 lg:w-[48%] ${
+          floatRight ? 'lg:float-right lg:ml-6' : 'lg:float-left lg:mr-6'
+        }`}
+      >
+        <p>{quote}</p>
+        <footer className="mt-4 text-sm text-slate-400">- {citation}</footer>
+      </blockquote>
+    ),
   },
   block: {
-    h1: ({ children }) => (
-      <Title mb="12px" color="blue.1">
+    h1: ({ children }: PortableTextChildrenProps) => (
+      <h2 className="mt-10 font-display text-3xl font-semibold tracking-tight text-white">
         {children}
-      </Title>
+      </h2>
     ),
-    h3: ({ children }) => (
-      <Text component="h3" size="xl" mt="10px" color="blue.1">
+    h3: ({ children }: PortableTextChildrenProps) => (
+      <h3 className="mt-8 font-display text-2xl font-semibold tracking-tight text-sky-100">
         {children}
-      </Text>
+      </h3>
     ),
-    normal: ({ children }) => (
-      <Text component="p" mt="8px">
-        {children}
-      </Text>
+    normal: ({ children }: PortableTextChildrenProps) => (
+      <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">{children}</p>
     ),
   },
   list: {
-    bullet: ({ children }) => (
-      <ListContainer>
-        <List type="unordered">{children}</List>
-      </ListContainer>
-    ),
-    number: ({ children }) => (
-      <ListContainer>
-        <List type="ordered">{children}</List>
-      </ListContainer>
-    ),
+    bullet: ({ children }: PortableTextChildrenProps) => <ul className="my-6 list-disc space-y-3 pl-6 text-slate-300">{children}</ul>,
+    number: ({ children }: PortableTextChildrenProps) => <ol className="my-6 list-decimal space-y-3 pl-6 text-slate-300">{children}</ol>,
   },
   listItem: {
-    bullet: ({ children }) => <List.Item>{children}</List.Item>,
-    number: ({ children }) => <List.Item>{children}</List.Item>,
+    bullet: ({ children }: PortableTextChildrenProps) => <li className="pl-1 leading-8">{children}</li>,
+    number: ({ children }: PortableTextChildrenProps) => <li className="pl-1 leading-8">{children}</li>,
   },
   marks: {
-    link: ({ children, value: { href } }) => {
-      const target = !href.startsWith('/') && '_blank';
+    link: ({ children, value: { href } }: PortableTextLinkMarkProps) => {
+      const target = !href.startsWith('/') ? '_blank' : undefined;
       return (
-        <Link className="text-link" href={href} target={target || ''}>
+        <Link className="text-link" href={href} target={target}>
           {children}
         </Link>
       );
@@ -150,5 +146,9 @@ const customComponents: PortableTextComponents = {
 
 export default function DocumentRenderer({ document }: DocumentRendererProps) {
   if (!document) return null;
-  return <PortableText value={document} components={customComponents} />;
+  return (
+    <div className="max-w-none">
+      <PortableText value={document} components={customComponents} />
+    </div>
+  );
 }

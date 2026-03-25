@@ -1,30 +1,11 @@
 import { PropsWithChildren } from 'react';
 
-import { Box } from '@mantine/core';
-
 export default function PageContentBox({ children }: PropsWithChildren) {
   return (
-    <Box
-      pos="absolute"
-      top="100px"
-      left="50%"
-      maw="960px"
-      w="100%"
-      h="calc(100% - 200px)"
-      p="1em"
-      sx={(theme) => ({
-        transform: 'translateX(-50%)',
-        backgroundColor: theme.colors.alphaDarkBlue[9],
-        borderRadius: '15px',
-        zIndex: 1,
-        color: 'white',
-        overflowY: 'auto',
-        '@media (max-width: 620px)': {
-          height: 'calc(100% - 100px)',
-        },
-      })}
-    >
-      {children}
-    </Box>
+    <section className="relative px-5 pb-16 pt-28 sm:px-8 sm:pt-32">
+      <div className="mx-auto w-full max-w-6xl rounded-[32px] border border-white/10 bg-white/[0.04] p-6 shadow-glow backdrop-blur-xl sm:p-10">
+        {children}
+      </div>
+    </section>
   );
 }

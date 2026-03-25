@@ -1,5 +1,3 @@
-import { Box, Title } from '@mantine/core';
-
 import Head from 'next/head';
 import Image from 'next/image';
 
@@ -9,62 +7,95 @@ import {
 } from '@/src/cms/client';
 import DocumentRenderer from '@/src/cms/documents/DocumentRenderer';
 import PageContentBox from '@/src/components/PageContentBox';
-import StarryBackground, {
-  StarryBackgroundProps,
-} from '@/src/components/StarryBackground';
-import { AboutEntry } from '@/src/types/about';
-import { getStarField } from '@/src/util/stars';
+import SectionHeading from '@/src/components/SectionHeading';
+import { siteConfig } from '@/src/config/site';
 
-interface AboutProps extends StarryBackgroundProps {
+interface AboutProps {
   about: AboutEntry;
 }
 
-export default function About({ stars, about }: AboutProps) {
+const storyPoints = [
+  'International perspective shaped by movement across cultures, institutions, and disciplines.',
+  'A strong pull toward AI, robotics, and software systems with real-world consequence.',
+  'Motivated by hard problems, technical range, and building things that scale beyond a single project.',
+];
+
+export default function About({ about }: AboutProps) {
   return (
     <>
       <Head>
-        <title>About Yassine Kraiem</title>
-        <meta name="description" content="Yassine Kraiem\'s Story" />
+        <title>About | {siteConfig.name}</title>
+        <meta
+          name="description"
+          content="Learn more about Yassine Kraiem, his background, and the technical direction behind his work in AI, robotics, and software engineering."
+        />
       </Head>
-      <PageContentBox>
-        <Box
-          pos="relative"
-          pt="33.3333%"
-          w="33.3333%"
-          display="inline-block"
-          mr="1em"
-          sx={{
-            float: 'left',
-            '@media (max-width: 620px)': {
-              paddingTop: '50%',
-              width: '50%',
-            },
-            '@media (max-width: 400px)': {
-              paddingTop: '60%',
-              width: '60%',
-            },
-          }}
-        >
-          <Image
-            priority
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAArACsDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAABQQGAwf/xAAlEAABAwMDBAMBAAAAAAAAAAABAAIDBAUREyExEiIjMhQzgVH/xAAYAQEAAwEAAAAAAAAAAAAAAAAFAAQGAv/EACERAAIBAwQDAQAAAAAAAAAAAAABAwIRIgQSISMxMjNB/9oADAMBAAIRAxEAPwDBthfIQACtfZICAFwjt7Q71WgtVIGgbKnrFu1Kt4NLNMqorFYiOmgLxA4tcto2m8fCFutJlp2VmHGRAqd2ecx0Lm1Lnf0pEUzsBJ/CGqdlUKLbhOT1brFOWTIrbCM8Jm2xjIRXUAUpbZBkLPzruQ1X8zQMjGmiLnGMFMRvGmhrrKMFd0/RB1AEIQZOFWIBjhTwuDpUiAMBOVrhBc9WYA+XCQtk+XDdDylX2s9wQmpXajUSrA10cviQV3nwDulY/q/EBeTsVI+ZUF+CSjl6pU013aFnrf8AZ+p9vqE7J+A8/uf/2Q=="
-            style={{ borderRadius: '25px' }}
-            src="/ProfilePicture.jpg"
-            alt="profile"
-            sizes="(min-width: 768px) 20vw,
-            (win-width: 576px) 33vw,
-            100vw"
-            fill
-          />
-        </Box>
-        <Title color="blue.2" align="center" underline>
-          About
-        </Title>
-        <br />
-        <DocumentRenderer document={about.body} />
-      </PageContentBox>
-      <StarryBackground stars={stars} />
+      <main>
+        <PageContentBox>
+          <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-sky-300/80">
+                About
+              </p>
+              <h1 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                Building toward intelligent systems with reach.
+              </h1>
+              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
+                I am a computer science student focused on AI engineering,
+                software systems, and the long arc toward robotics and embodied
+                intelligence. My path combines international context, academic
+                discipline, and a builder mindset.
+              </p>
+
+              <div className="mt-8 space-y-3">
+                {storyPoints.map((point) => (
+                  <div
+                    key={point}
+                    className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-7 text-slate-200"
+                  >
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-6">
+              <div className="relative mx-auto aspect-[5/4] w-full max-w-2xl overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.05]">
+                <Image
+                  priority
+                  src="/ProfilePicture.jpg"
+                  alt="Yassine Kraiem"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+              </div>
+              <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-sky-500/10 to-transparent p-6">
+                <p className="text-xs uppercase tracking-[0.26em] text-slate-300">
+                  Direction
+                </p>
+                <p className="mt-4 text-lg leading-8 text-white">
+                  The long-term goal is to work on systems that blend intelligence,
+                  software, and real-world interaction. That is why AI, automation,
+                  robotics, and high-agency engineering matter to me.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14">
+            <SectionHeading
+              eyebrow="Story"
+              title="The longer version"
+              description="A concise narrative shaped by the Sanity content powering this site."
+            />
+            <div className="mt-8 rounded-[28px] border border-white/10 bg-slate-950/40 p-6 sm:p-8">
+              <DocumentRenderer document={about.body} />
+            </div>
+          </div>
+        </PageContentBox>
+      </main>
     </>
   );
 }
@@ -80,7 +111,6 @@ export async function getStaticProps() {
   return {
     props: {
       about: abouts[0],
-      stars: getStarField(450),
     },
   };
 }

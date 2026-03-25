@@ -1,18 +1,9 @@
-import { TargetAndTransition, motion, useAnimationFrame } from 'framer-motion';
-import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const starRadiusRange = 6;
-const animationDuration = 0.5; // seconds
-const twinkleAnimation: TargetAndTransition = {
-  opacity: [
-    ...new Array(20).fill(0).map((_, i) => 1 - (i + 1) * 0.05),
-    ...new Array(20).fill(0).map((_, i) => 1 - 19 * 0.05 + i * 0.05),
-  ],
-  transition: { duration: animationDuration },
-};
 
 export interface StarryBackgroundProps {
-  stars: Star[];
+  stars?: Star[];
 }
 
 export interface Star {
@@ -22,39 +13,52 @@ export interface Star {
   opacity: number;
 }
 
-export default function StarryBackground({ stars }: StarryBackgroundProps) {
-  let ticker = 0;
-  const [starToAnimate, setStarToAnimate] = useState<number>(0);
-  useAnimationFrame((time, delta) => {
-    ticker += delta;
-    if (ticker > animationDuration * 1000) {
-      ticker = 0;
-      if (Math.random() > 0.5) {
-        setStarToAnimate(Math.floor(Math.random() * stars.length));
-      }
-    }
-  });
+const orbiters = [
+  {
+    className:
+      'left-[8%] top-24 h-72 w-72 bg-blue-500/16 blur-3xl sm:h-96 sm:w-96',
+    duration: 14,
+  },
+  {
+    className:
+      'right-[10%] top-[22%] h-64 w-64 bg-cyan-300/12 blur-3xl sm:h-80 sm:w-80',
+    duration: 18,
+  },
+  {
+    className:
+      'bottom-[-6rem] left-1/2 h-72 w-72 -translate-x-1/2 bg-sky-400/10 blur-3xl sm:h-[28rem] sm:w-[28rem]',
+    duration: 22,
+  },
+];
 
-  if (!stars) return null;
+export default function StarryBackground({ stars = [] }: StarryBackgroundProps) {
+  const subtleStars = stars.slice(0, 80);
 
   return (
-    <>
-      {stars.map(({ x, y, r, opacity }, i) => (
+    <div className="pointer-events-none fixed inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-grid-fade bg-[size:48px_48px] opacity-[0.06]" />
+      {orbiters.map((orbiter, idx) => (
         <motion.div
-          key={i}
-          initial={false}
-          className="box"
-          style={{
-            position: 'absolute',
-            left: x,
-            top: y,
-            width: r,
-            height: r,
-            backgroundColor: `rgba(255, 255, 255, ${opacity})`,
+          key={idx}
+          className={`absolute rounded-full ${orbiter.className}`}
+          animate={{ scale: [1, 1.08, 0.96, 1], opacity: [0.8, 1, 0.75, 0.8] }}
+          transition={{
+            duration: orbiter.duration,
+            repeat: Infinity,
+            ease: 'easeInOut',
           }}
-          animate={starToAnimate === i ? twinkleAnimation : {}}
         />
       ))}
-    </>
+      {subtleStars.map(({ x, y, r, opacity }, idx) => (
+        <motion.div
+          key={`${x}_${y}_${idx}`}
+          className="absolute rounded-full bg-white"
+          style={{ left: x, top: y, width: r, height: r, opacity: opacity * 0.55 }}
+          animate={{ opacity: [opacity * 0.25, opacity * 0.7, opacity * 0.25] }}
+          transition={{ duration: 4 + (idx % 5), repeat: Infinity, ease: 'easeInOut' }}
+        />
+      ))}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050816] to-transparent" />
+    </div>
   );
 }
