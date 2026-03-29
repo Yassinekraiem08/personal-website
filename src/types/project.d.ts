@@ -1,16 +1,15 @@
-import { PortableTextBlock } from '@portabletext/types';
-
 declare global {
   interface ProjectEntry extends CMSDocument {
+    codeLink?: string;
     description: string;
+    demoLink?: string;
     images?: Image[];
     mainImage: Image;
     name: string;
     slug: Slug;
     startYear: number;
     tools: string[];
-    links?: string[];
-    body?: PortableTextBlock[];
+    body?: RichContentBlock[];
   }
 }
 

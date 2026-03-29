@@ -4,6 +4,8 @@
 
 :root {
   color-scheme: dark;
+  --font-body: 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-display: 'Helvetica Neue', 'Arial Narrow', sans-serif;
 }
 
 * {

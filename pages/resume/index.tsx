@@ -2,22 +2,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import {
-  DocumentType,
-  Order,
-  OrderBy,
-  getAllForDocumentTypeOrdered,
-} from '@/src/cms/client';
-import { urlForImage } from '@/src/cms/images';
 import PageContentBox from '@/src/components/PageContentBox';
 import SectionHeading from '@/src/components/SectionHeading';
+import { careerEntries, educationEntries } from '@/src/content/siteContent';
 import { siteConfig } from '@/src/config/site';
-import { DAYS } from '@/src/util/time';
-
-interface ResumeProps {
-  career: CareerEntry[];
-  education: EducationEntry[];
-}
 
 const achievementItems = [
   'Computer science student with a demonstrated pattern of self-direction and technical growth.',
@@ -25,7 +13,10 @@ const achievementItems = [
   'Motivated by intelligent systems, software leverage, and technical work with long-term significance.',
 ];
 
-export default function Resume({ career, education }: ResumeProps) {
+export default function Resume() {
+  const career = careerEntries;
+  const education = educationEntries;
+
   return (
     <>
       <Head>
@@ -70,45 +61,51 @@ export default function Resume({ career, education }: ResumeProps) {
                 title="Roles that show range, initiative, and progression."
               />
               <div className="mt-8 space-y-5">
-                {career.map((item) => (
-                  <article
-                    key={item._id}
-                    className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
-                  >
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                      <div className="flex items-start gap-4">
-                        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                          <Image
-                            src={urlForImage(item.image.asset).size(120, 120).url()}
-                            alt={item.image.alt || item.company}
-                            fill
-                            className="object-cover"
-                            sizes="56px"
-                          />
-                        </div>
-                        <div>
-                          <h2 className="font-display text-2xl font-semibold text-white">
-                            {item.title}
-                          </h2>
-                          <p className="mt-1 text-sm font-medium text-sky-200">
-                            {item.company}
-                          </p>
-                          {item.department || item.team ? (
-                            <p className="mt-2 text-sm text-slate-400">
-                              {[item.department, item.team].filter(Boolean).join(' • ')}
+                {career.length ? (
+                  career.map((item) => (
+                    <article
+                      key={item._id}
+                      className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
+                    >
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="flex items-start gap-4">
+                          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                            <Image
+                              src={item.image.src}
+                              alt={item.image.alt || item.company}
+                              fill
+                              className="object-cover"
+                              sizes="56px"
+                            />
+                          </div>
+                          <div>
+                            <h2 className="font-display text-2xl font-semibold text-white">
+                              {item.title}
+                            </h2>
+                            <p className="mt-1 text-sm font-medium text-sky-200">
+                              {item.company}
                             </p>
-                          ) : null}
+                            {item.department || item.team ? (
+                              <p className="mt-2 text-sm text-slate-400">
+                                {[item.department, item.team].filter(Boolean).join(' • ')}
+                              </p>
+                            ) : null}
+                          </div>
                         </div>
+                        <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
+                          {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
+                        </p>
                       </div>
-                      <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
-                        {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
+                      <p className="mt-5 text-sm leading-7 text-slate-300">
+                        {item.description}
                       </p>
-                    </div>
-                    <p className="mt-5 text-sm leading-7 text-slate-300">
-                      {item.description}
-                    </p>
-                  </article>
-                ))}
+                    </article>
+                  ))
+                ) : (
+                  <div className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] p-6 text-sm leading-7 text-slate-400">
+                    Experience entries will go here once we add your final resume content.
+                  </div>
+                )}
               </div>
             </div>
 
@@ -119,38 +116,44 @@ export default function Resume({ career, education }: ResumeProps) {
                   title="Academic foundation"
                 />
                 <div className="mt-8 space-y-5">
-                  {education.map((item) => (
-                    <article
-                      key={item._id}
-                      className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                          <Image
-                            src={urlForImage(item.image.asset).size(120, 120).url()}
-                            alt={item.image.alt || item.school}
-                            fill
-                            className="object-cover"
-                            sizes="56px"
-                          />
+                  {education.length ? (
+                    education.map((item) => (
+                      <article
+                        key={item._id}
+                        className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                            <Image
+                              src={item.image.src}
+                              alt={item.image.alt || item.school}
+                              fill
+                              className="object-cover"
+                              sizes="56px"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <h2 className="font-display text-xl font-semibold text-white">
+                              {item.school}
+                            </h2>
+                            <p className="mt-1 text-sm font-medium text-sky-200">
+                              {item.major} • {item.degree}
+                            </p>
+                            <p className="mt-2 text-sm text-slate-400">
+                              {item.startYear} - {item.endYear} • GPA {item.gpa.toFixed(1)}
+                            </p>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <h2 className="font-display text-xl font-semibold text-white">
-                            {item.school}
-                          </h2>
-                          <p className="mt-1 text-sm font-medium text-sky-200">
-                            {item.major} • {item.degree}
-                          </p>
-                          <p className="mt-2 text-sm text-slate-400">
-                            {item.startYear} - {item.endYear} • GPA {item.gpa.toFixed(1)}
-                          </p>
-                        </div>
-                      </div>
-                      <p className="mt-5 text-sm leading-7 text-slate-300">
-                        {item.description}
-                      </p>
-                    </article>
-                  ))}
+                        <p className="mt-5 text-sm leading-7 text-slate-300">
+                          {item.description}
+                        </p>
+                      </article>
+                    ))
+                  ) : (
+                    <div className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] p-6 text-sm leading-7 text-slate-400">
+                      Education details will go here once we add your final academic content.
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -170,31 +173,4 @@ export default function Resume({ career, education }: ResumeProps) {
       </main>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const career: CareerEntry[] = await getAllForDocumentTypeOrdered<CareerEntry>(
-    DocumentType.Career,
-    OrderBy.EndYear,
-    Order.DESC
-  );
-
-  const education: EducationEntry[] =
-    await getAllForDocumentTypeOrdered<EducationEntry>(
-      DocumentType.Education,
-      OrderBy.EndYear,
-      Order.DESC
-    );
-
-  if (!education || !career || education.length < 1 || career.length < 1) {
-    throw Error('Failed to fetch education or career entries');
-  }
-
-  return {
-    props: {
-      career,
-      education,
-    },
-    revalidate: 90 * DAYS,
-  };
 }

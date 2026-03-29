@@ -1,18 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
-import {
-  DocumentType,
-  getAllForDocumentTypeByCreatedDate,
-} from '@/src/cms/client';
-import DocumentRenderer from '@/src/cms/documents/DocumentRenderer';
+import DocumentRenderer from '@/src/components/DocumentRenderer';
 import PageContentBox from '@/src/components/PageContentBox';
 import SectionHeading from '@/src/components/SectionHeading';
+import { aboutContent } from '@/src/content/siteContent';
 import { siteConfig } from '@/src/config/site';
-
-interface AboutProps {
-  about: AboutEntry;
-}
 
 const storyPoints = [
   'International perspective shaped by movement across cultures, institutions, and disciplines.',
@@ -20,7 +13,7 @@ const storyPoints = [
   'Motivated by hard problems, technical range, and building things that scale beyond a single project.',
 ];
 
-export default function About({ about }: AboutProps) {
+export default function About() {
   return (
     <>
       <Head>
@@ -91,26 +84,11 @@ export default function About({ about }: AboutProps) {
               description="A concise narrative shaped by the Sanity content powering this site."
             />
             <div className="mt-8 rounded-[28px] border border-white/10 bg-slate-950/40 p-6 sm:p-8">
-              <DocumentRenderer document={about.body} />
+              <DocumentRenderer document={aboutContent.body} />
             </div>
           </div>
         </PageContentBox>
       </main>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const abouts: AboutEntry[] =
-    await getAllForDocumentTypeByCreatedDate<AboutEntry>(DocumentType.About, 1);
-
-  if (!abouts || abouts.length < 1) {
-    throw Error('about page content not found');
-  }
-
-  return {
-    props: {
-      about: abouts[0],
-    },
-  };
 }

@@ -2,16 +2,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { GetStaticPropsContext } from 'next';
-import { useRouter } from 'next/router';
-
-import {
-  DocumentType,
-  getAllForDocumentType,
-  getProjectForSlug,
-} from '@/src/cms/client';
-import DocumentRenderer from '@/src/cms/documents/DocumentRenderer';
-import { urlForImage } from '@/src/cms/images';
+import DocumentRenderer from '@/src/components/DocumentRenderer';
 import PageContentBox from '@/src/components/PageContentBox';
+import { getProjectBySlug, projectEntries } from '@/src/content/siteContent';
 import { siteConfig } from '@/src/config/site';
 
 interface ProjectProps {
@@ -19,20 +12,6 @@ interface ProjectProps {
 }
 
 export default function Project({ project }: ProjectProps) {
-  const router = useRouter();
-
-  if (router.isFallback) {
-    return (
-      <main>
-        <PageContentBox>
-          <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-10 text-center text-slate-300">
-            Loading project...
-          </div>
-        </PageContentBox>
-      </main>
-    );
-  }
-
   return (
     <>
       <Head>
@@ -77,27 +56,33 @@ export default function Project({ project }: ProjectProps) {
                 >
                   Back to projects
                 </Link>
-                {project.links?.map((link) => (
+                {project.demoLink ? (
                   <Link
-                    key={link}
-                    href={link}
+                    href={project.demoLink}
                     target="_blank"
                     className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
                   >
-                    Open link
+                    Live demo
                   </Link>
-                ))}
+                ) : null}
+                {project.codeLink ? (
+                  <Link
+                    href={project.codeLink}
+                    target="_blank"
+                    className="rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+                  >
+                    View code
+                  </Link>
+                ) : null}
               </div>
             </div>
 
             <div className="relative aspect-[16/11] overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.04]">
               <Image
-                placeholder="blur"
-                blurDataURL={project.mainImage.asset.metadata?.lqip}
-                src={urlForImage(project.mainImage.asset).url()}
+                src={project.mainImage.src}
                 alt={project.mainImage.alt || project.name}
                 fill
-                className="object-cover"
+                className={project.mainImage.contain ? 'object-contain p-8' : 'object-cover'}
                 sizes="(min-width: 1024px) 45vw, 100vw"
               />
             </div>
@@ -122,14 +107,12 @@ export default function Project({ project }: ProjectProps) {
               <div className="grid gap-5 md:grid-cols-2">
                 {project.images.map((image, idx) => (
                   <div
-                    key={`${image.asset._ref}_${idx}`}
+                    key={`${image.src}_${idx}`}
                     className="overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-3"
                   >
                     <div className="relative aspect-[4/3] overflow-hidden rounded-[22px]">
                       <Image
-                        placeholder="blur"
-                        blurDataURL={image.asset.metadata?.lqip}
-                        src={urlForImage(image.asset).url()}
+                        src={image.src}
                         alt={image.alt || project.name}
                         fill
                         className="object-cover"
@@ -153,19 +136,11 @@ export default function Project({ project }: ProjectProps) {
 }
 
 export async function getStaticPaths() {
-  const projects: ProjectEntry[] = await getAllForDocumentType<ProjectEntry>(
-    DocumentType.Project
-  );
-
-  if (!projects || projects.length < 1) {
-    throw Error('No projects found for /projects');
-  }
-
   return {
-    paths: projects.map(({ slug }) => ({
+    paths: projectEntries.map(({ slug }) => ({
       params: { slug: slug.current },
     })),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -173,9 +148,9 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
   const slug = ctx.params?.slug;
   if (!slug) throw Error('Slug not found for /projects/{slug}');
 
-  const project = await getProjectForSlug<ProjectEntry>(slug as string);
+  const project = getProjectBySlug(slug as string);
 
-  if (!project || Object.keys(project).length === 0) {
+  if (!project) {
     return { notFound: true };
   }
 

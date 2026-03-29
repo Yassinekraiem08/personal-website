@@ -1,26 +1,32 @@
 export const siteConfig = {
   name: 'Yassine Kraiem',
-  title: 'AI engineer, software builder, and robotics-focused technologist',
+  title: 'AI engineer, software builder, and intelligent-systems technologist',
   description:
-    'Personal website of Yassine Kraiem, a computer science student building at the intersection of AI, robotics, and high-impact software systems.',
+    'Personal website of Yassine Kraiem, a computer science student building at the intersection of AI, intelligent systems, and high-impact software.',
+  domain: 'yassinekraiem.com',
+  siteUrl: 'https://yassinekraiem.com',
   location: 'New York / Washington, D.C. / Global',
+  email: 'yassinekraiem08@gmail.com',
   github: 'https://github.com/Yassinekraiem08',
   linkedin: 'https://www.linkedin.com/in/yassinekraiem/',
-  contactHref: 'https://www.linkedin.com/in/yassinekraiem/',
+  medium: 'https://medium.com/@yassinekraiem08',
+  x: 'https://x.com/yassinekr2',
+  contactHref: '/contact',
+  resumeHref: '/Yassine_Kraiem_Resume.pdf',
 };
 
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/projects', label: 'Projects' },
-  { href: '/resume', label: 'Resume' },
-  { href: '/#contact', label: 'Contact' },
+  { href: siteConfig.resumeHref, label: 'Resume' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export const skillGroups = [
   {
     label: 'Core',
-    items: ['AI Systems', 'Software Engineering', 'Robotics', 'Product Thinking'],
+    items: ['AI Systems', 'Software Engineering', 'Intelligent Systems', 'Product Thinking'],
   },
   {
     label: 'Frontend',
@@ -32,7 +38,7 @@ export const skillGroups = [
   },
   {
     label: 'Focus Areas',
-    items: ['Embodied AI', 'Intelligent Systems', 'Automation', 'Builder-Led Execution'],
+    items: ['Applied AI', 'Intelligent Systems', 'Automation', 'Builder-Led Execution'],
   },
 ];
 
@@ -43,9 +49,9 @@ export const highlightPillars = [
       'Designing systems that automate work, reason across steps, and convert models into useful products.',
   },
   {
-    title: 'Robotics-driven ambition',
+    title: 'Systems-level ambition',
     description:
-      'Focused on embodied AI and the engineering required to move from software interfaces to real-world intelligent behavior.',
+      'Interested in intelligent systems and the engineering required to turn software into real-world leverage across ambitious technical domains.',
   },
   {
     title: 'Founder-style execution',

@@ -4,18 +4,14 @@ import { ChangeEvent, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { DocumentType, getAllForDocumentType } from '@/src/cms/client';
 import PageContentBox from '@/src/components/PageContentBox';
 import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
 import SectionHeading from '@/src/components/SectionHeading';
+import { projectEntries } from '@/src/content/siteContent';
 import { siteConfig } from '@/src/config/site';
-import { DAYS } from '@/src/util/time';
 
-interface ProjectsProps {
-  projects: ProjectEntry[];
-}
-
-export default function Projects({ projects }: ProjectsProps) {
+export default function Projects() {
+  const projects = projectEntries;
   const [search, setSearch] = useState('');
   const [currentProjects, setCurrentProjects] = useState<ProjectEntry[]>(projects);
   const [projectsFuse] = useState(
@@ -80,7 +76,7 @@ export default function Projects({ projects }: ProjectsProps) {
           </div>
 
           {currentProjects.length ? (
-            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <div className="mt-8 grid gap-4 xl:grid-cols-3">
               {currentProjects.map((project, idx) => (
                 <ProjectShowcaseCard
                   key={project._id}
@@ -107,21 +103,4 @@ export default function Projects({ projects }: ProjectsProps) {
       </main>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const projects: ProjectEntry[] = await getAllForDocumentType<ProjectEntry>(
-    DocumentType.Project
-  );
-
-  if (!projects || projects.length < 1) {
-    throw Error('No projects found for /projects');
-  }
-
-  return {
-    props: {
-      projects,
-    },
-    revalidate: 3 * DAYS,
-  };
 }

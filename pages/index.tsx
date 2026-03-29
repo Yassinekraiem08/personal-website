@@ -3,47 +3,37 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import {
-  DocumentType,
-  Order,
-  OrderBy,
-  getAllForDocumentType,
-  getAllForDocumentTypeByCreatedDate,
-  getAllForDocumentTypeOrdered,
-} from '@/src/cms/client';
 import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
 import SectionHeading from '@/src/components/SectionHeading';
 import SectionShell from '@/src/components/SectionShell';
+import {
+  aboutContent,
+  careerEntries,
+  educationEntries,
+  projectEntries,
+} from '@/src/content/siteContent';
 import { highlightPillars, siteConfig, skillGroups } from '@/src/config/site';
 
-interface HomeProps {
-  about: AboutEntry | null;
-  projects: ProjectEntry[];
-  career: CareerEntry[];
-  education: EducationEntry[];
-}
-
 const stats = [
-  { label: 'Focus', value: 'AI systems + robotics' },
+  { label: 'Focus', value: 'AI systems + software' },
   { label: 'Approach', value: 'Engineer with founder energy' },
   { label: 'Strength', value: 'Technical depth + execution' },
 ];
 
-export default function Home({
-  about,
-  projects,
-  career,
-  education,
-}: HomeProps) {
+export default function Home() {
+  const about = aboutContent;
+  const projects = projectEntries;
+  const career = careerEntries;
+  const education = educationEntries;
   const featuredProjects = projects.slice(0, 3);
   const latestCareer = career.slice(0, 3);
   const aboutPreview =
-    'Computer science student building intelligent systems with a long-term focus on embodied AI, robotics, and software that matters.';
+    'Computer science student building intelligent systems with a long-term focus on AI, software, and high-leverage systems that matter.';
 
   return (
     <>
       <Head>
-        <title>{siteConfig.name} | AI Engineer and Robotics-Focused Builder</title>
+        <title>{siteConfig.name} | AI Engineer and Systems Builder</title>
         <meta name="description" content={siteConfig.description} />
       </Head>
       <main>
@@ -72,9 +62,9 @@ export default function Home({
                 transition={{ duration: 0.55, delay: 0.12 }}
                 className="mt-6 max-w-2xl text-xl font-medium leading-8 text-slate-200 sm:text-2xl"
               >
-                Computer science student building ambitious AI systems, high-impact
-                software, and robotics-oriented technology with research and founder
-                upside.
+                Computer science student building ambitious AI systems,
+                high-impact software, and intelligent tools with research and
+                founder upside.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
@@ -100,13 +90,14 @@ export default function Home({
                   View Projects
                 </Link>
                 <Link
-                  href="/resume"
+                  href={siteConfig.resumeHref}
+                  target="_blank"
                   className="rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white transition hover:border-sky-300/35 hover:bg-white/[0.06]"
                 >
                   Resume
                 </Link>
                 <Link
-                  href="#contact"
+                  href={siteConfig.contactHref}
                   className="rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-sky-300/35 hover:text-white"
                 >
                   Contact
@@ -225,13 +216,19 @@ export default function Home({
             </Link>
           </div>
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {featuredProjects.map((project, idx) => (
-              <ProjectShowcaseCard
-                key={project._id}
-                project={project}
-                priority={idx === 0}
-              />
-            ))}
+            {featuredProjects.length ? (
+              featuredProjects.map((project, idx) => (
+                <ProjectShowcaseCard
+                  key={project._id}
+                  project={project}
+                  priority={idx === 0}
+                />
+              ))
+            ) : (
+              <div className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] p-6 text-sm leading-7 text-slate-400 lg:col-span-3">
+                Project entries will appear here once we add your finalized portfolio content.
+              </div>
+            )}
           </div>
         </SectionShell>
 
@@ -244,34 +241,40 @@ export default function Home({
                 description="Experience that signals range, but with a clear center of gravity: technical growth, high ownership, and building toward harder problems."
               />
               <div className="mt-8 space-y-4">
-                {latestCareer.map((item) => (
-                  <div
-                    key={item._id}
-                    className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
-                  >
-                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                      <div>
-                        <h3 className="font-display text-xl font-semibold text-white">
-                          {item.title}
-                        </h3>
-                        <p className="mt-1 text-sm font-medium text-sky-200">
-                          {item.company}
-                        </p>
-                        {item.department || item.team ? (
-                          <p className="mt-2 text-sm text-slate-400">
-                            {[item.department, item.team].filter(Boolean).join(' • ')}
+                {latestCareer.length ? (
+                  latestCareer.map((item) => (
+                    <div
+                      key={item._id}
+                      className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
+                    >
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <h3 className="font-display text-xl font-semibold text-white">
+                            {item.title}
+                          </h3>
+                          <p className="mt-1 text-sm font-medium text-sky-200">
+                            {item.company}
                           </p>
-                        ) : null}
+                          {item.department || item.team ? (
+                            <p className="mt-2 text-sm text-slate-400">
+                              {[item.department, item.team].filter(Boolean).join(' • ')}
+                            </p>
+                          ) : null}
+                        </div>
+                        <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
+                          {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
+                        </p>
                       </div>
-                      <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
-                        {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
+                      <p className="mt-4 text-sm leading-7 text-slate-300">
+                        {item.description}
                       </p>
                     </div>
-                    <p className="mt-4 text-sm leading-7 text-slate-300">
-                      {item.description}
-                    </p>
+                  ))
+                ) : (
+                  <div className="rounded-[24px] border border-dashed border-white/10 bg-white/[0.03] p-5 text-sm leading-7 text-slate-400">
+                    Experience highlights will appear here once we add your final resume entries.
                   </div>
-                ))}
+                )}
               </div>
             </div>
 
@@ -307,7 +310,7 @@ export default function Home({
                     Education
                   </p>
                   <p className="mt-3 text-lg font-semibold text-white">
-                    {education[0]?.school}
+                    {education[0]?.school || 'Education details coming soon'}
                   </p>
                   <p className="mt-2 text-sm leading-7 text-slate-300">
                     Studying computer science while building practical systems and
@@ -320,20 +323,19 @@ export default function Home({
           </div>
         </SectionShell>
 
-        <SectionShell id="contact" className="pb-20">
+        <SectionShell className="pb-20">
           <div className="rounded-[32px] border border-white/10 bg-white/[0.05] p-8 shadow-glow sm:p-10">
             <SectionHeading
               eyebrow="Contact"
-              title="Open to research, startup, and high-caliber engineering conversations."
-              description="If you are building in AI, robotics, or ambitious software, I am interested in the right conversations."
+              title="Open to ambitious conversations."
+              description="If something in the work resonates, let's continue it on a dedicated contact page."
             />
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href={siteConfig.linkedin}
-                target="_blank"
+                href={siteConfig.contactHref}
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
               >
-                Contact on LinkedIn
+                Contact page
               </Link>
               <Link
                 href={siteConfig.github}
@@ -343,7 +345,8 @@ export default function Home({
                 GitHub
               </Link>
               <Link
-                href="/resume"
+                href={siteConfig.resumeHref}
+                target="_blank"
                 className="rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
               >
                 View resume
@@ -354,30 +357,4 @@ export default function Home({
       </main>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const [abouts, projects, career, education] = await Promise.all([
-    getAllForDocumentTypeByCreatedDate<AboutEntry>(DocumentType.About, 1),
-    getAllForDocumentType<ProjectEntry>(DocumentType.Project),
-    getAllForDocumentTypeOrdered<CareerEntry>(
-      DocumentType.Career,
-      OrderBy.EndYear,
-      Order.DESC
-    ),
-    getAllForDocumentTypeOrdered<EducationEntry>(
-      DocumentType.Education,
-      OrderBy.EndYear,
-      Order.DESC
-    ),
-  ]);
-
-  return {
-    props: {
-      about: abouts[0] || null,
-      projects,
-      career,
-      education,
-    },
-  };
 }

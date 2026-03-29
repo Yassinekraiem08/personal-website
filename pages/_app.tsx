@@ -1,7 +1,6 @@
 import '@/styles/globals.css';
 
 import { MantineProvider, MantineThemeOverride } from '@mantine/core';
-import { Manrope, Space_Grotesk } from '@next/font/google';
 
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -9,16 +8,6 @@ import Head from 'next/head';
 import StarryBackground from '@/src/components/StarryBackground';
 import Header from '@/src/components/Header';
 import { siteConfig } from '@/src/config/site';
-
-const bodyFont = Manrope({
-  subsets: ['latin'],
-  variable: '--font-body',
-});
-
-const displayFont = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-display',
-});
 
 const theme: MantineThemeOverride = {
   colorScheme: 'dark',
@@ -72,10 +61,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>{siteConfig.name}</title>
         <meta name="description" content={siteConfig.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:site_name" content={siteConfig.name} />
+        <meta property="og:title" content={siteConfig.name} />
+        <meta property="og:description" content={siteConfig.description} />
+        <meta property="og:url" content={siteConfig.siteUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={siteConfig.name} />
+        <meta name="twitter:description" content={siteConfig.description} />
+        <link rel="canonical" href={siteConfig.siteUrl} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-        <div className={`${bodyFont.variable} ${displayFont.variable}`}>
+        <div>
           <StarryBackground />
           <Header />
           <Component {...pageProps} />

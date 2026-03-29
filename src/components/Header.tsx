@@ -7,11 +7,12 @@ import { useRouter } from 'next/router';
 
 import Github from '@/src/icons/Github.svg';
 import LinkedIn from '@/src/icons/LinkedIn.svg';
+import X from '@/src/icons/X.svg';
 import { navLinks, siteConfig } from '@/src/config/site';
 
 export const navButtons = [
   { label: 'About', path: '/about' },
-  { label: 'Resume', path: '/resume' },
+  { label: 'Resume', path: siteConfig.resumeHref },
   { label: 'Projects', path: '/projects' },
 ];
 
@@ -38,24 +39,25 @@ export default function Header() {
               <p className="font-display text-sm font-semibold tracking-[0.22em] text-white">
                 {siteConfig.name}
               </p>
-              <p className="text-xs text-slate-400">
-                AI engineer • software builder • robotics-focused
-              </p>
             </div>
           </Link>
 
           <nav className="hidden items-center gap-2 lg:flex">
             {navLinks.map((item) => {
+              const isResumeLink = item.href === siteConfig.resumeHref;
               const isActive =
                 item.href === '/'
                   ? router.pathname === '/'
                   : item.href.startsWith('/#')
+                    ? false
+                    : isResumeLink
                     ? false
                     : router.pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
+                  target={isResumeLink ? '_blank' : undefined}
                   className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                     isActive
                       ? 'bg-white text-slate-950'
@@ -84,6 +86,14 @@ export default function Header() {
               aria-label="GitHub"
             >
               <Github />
+            </Link>
+            <Link
+              href={siteConfig.x}
+              target="_blank"
+              className="rounded-full border border-white/10 p-2 text-slate-300 transition hover:border-sky-300/30 hover:text-white"
+              aria-label="X"
+            >
+              <X />
             </Link>
             <Link
               href="/projects"
@@ -130,6 +140,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                target={item.href === siteConfig.resumeHref ? '_blank' : undefined}
                 className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-slate-200"
                 onClick={() => setMobileOpen(false)}
               >
@@ -152,6 +163,14 @@ export default function Header() {
                 aria-label="GitHub"
               >
                 <Github />
+              </Link>
+              <Link
+                href={siteConfig.x}
+                target="_blank"
+                className="rounded-full border border-white/10 p-2 text-slate-300"
+                aria-label="X"
+              >
+                <X />
               </Link>
             </div>
           </motion.div>
