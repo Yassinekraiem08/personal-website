@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-// @ts-expect-error three ships example fonts as JSON modules.
 import helvetiker from 'three/examples/fonts/helvetiker_regular.typeface.json';
 
 interface HeroParticleTextProps {
