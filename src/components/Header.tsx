@@ -40,8 +40,8 @@ export default function Header() {
           scrolled ? 'bg-slate-950/88' : ''
         }`}
       >
-        <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2">
+        <div className="flex w-full items-center">
+          <Link href="/" className="flex flex-shrink-0 items-center gap-3">
             <div className="relative h-8 w-8 overflow-hidden rounded-xl border border-white/10 bg-white/5">
               <Image
                 priority
@@ -53,13 +53,13 @@ export default function Header() {
               />
             </div>
             <div className="hidden min-w-0 sm:block">
-              <p className="text-[20px] font-bold text-white">
+              <p className="text-[18px] font-semibold tracking-[-0.02em] text-white">
                 {siteConfig.name}
               </p>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-6 sm:flex">
+          <nav className="hidden flex-1 items-center justify-center gap-2 sm:flex xl:gap-3">
             {navLinks.map((item) => {
               const isResumeLink = item.href === siteConfig.resumeHref;
               const isActive =
@@ -75,9 +75,9 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   target={isResumeLink ? '_blank' : undefined}
-                  className={`rounded-full px-2 py-2 text-[18px] font-medium transition ${
+                  className={`rounded-full px-3 py-2 text-[15px] font-medium transition xl:px-4 ${
                     isActive
-                      ? 'text-white'
+                      ? 'bg-white/8 text-white'
                       : 'text-slate-300 hover:bg-white/5 hover:text-white'
                   }`}
                 >
@@ -87,7 +87,7 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-5 sm:flex">
+          <div className="hidden flex-shrink-0 items-center gap-2 sm:flex">
             <Link
               href={siteConfig.linkedin}
               target="_blank"
@@ -116,7 +116,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white sm:hidden"
+            className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white sm:hidden"
             aria-label="Toggle navigation"
             onClick={() => setMobileOpen((value) => !value)}
           >
