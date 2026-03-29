@@ -28,16 +28,16 @@ export default function SectionShell({
   }
 
   return (
-    <motion.section
-      id={id}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, ease: 'easeOut' }}
-      className={sectionClassName}
-      {...props}
-    >
-      <div className="mx-auto w-full max-w-7xl">{children}</div>
-    </motion.section>
+    <section id={id} className={sectionClassName} {...props}>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
+        className="mx-auto w-full max-w-7xl"
+      >
+        {children}
+      </motion.div>
+    </section>
   );
 }
