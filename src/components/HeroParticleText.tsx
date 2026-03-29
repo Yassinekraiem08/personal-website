@@ -63,7 +63,7 @@ export default function HeroParticleText({
 
     const colorChange = new THREE.Color();
     let particlesMesh: any | null = null;
-    let geometryCopy: THREE.BufferGeometry | null = null;
+    let geometryCopy: any | null = null;
     let particleStates: ParticleState[] = [];
     let animationFrame = 0;
     let buttonDown = false;
@@ -199,7 +199,7 @@ export default function HeroParticleText({
       const yMid =
         ((geometry.boundingBox?.max.y ?? 0) - (geometry.boundingBox?.min.y ?? 0)) / 2.85;
 
-      const holeShapes: THREE.Shape[] = [];
+      const holeShapes = [];
       for (const shape of shapes) {
         if (shape.holes?.length) {
           holeShapes.push(...shape.holes);
@@ -207,7 +207,7 @@ export default function HeroParticleText({
       }
 
       const allShapes = [...shapes, ...holeShapes];
-      const points: THREE.Vector3[] = [];
+      const points = [];
       const colors: number[] = [];
       const sizes: number[] = [];
 
@@ -274,10 +274,10 @@ export default function HeroParticleText({
       const intersects = raycaster.intersectObject(planeArea);
 
       if (intersects.length > 0 && particlesMesh && geometryCopy) {
-        const positions = particlesMesh.geometry.attributes.position as THREE.BufferAttribute;
-        const copy = geometryCopy.attributes.position as THREE.BufferAttribute;
-        const colors = particlesMesh.geometry.attributes.customColor as THREE.BufferAttribute;
-        const sizes = particlesMesh.geometry.attributes.size as THREE.BufferAttribute;
+        const positions = particlesMesh.geometry.attributes.position as any;
+        const copy = geometryCopy.attributes.position as any;
+        const colors = particlesMesh.geometry.attributes.customColor as any;
+        const sizes = particlesMesh.geometry.attributes.size as any;
 
         const mx = intersects[0].point.x;
         const my = intersects[0].point.y;
@@ -417,7 +417,7 @@ export default function HeroParticleText({
 
       clearText();
       planeArea.geometry.dispose();
-      (planeArea.material as THREE.Material).dispose();
+      (planeArea.material as any).dispose();
       shaderMaterial.dispose();
       particleTexture?.dispose();
       renderer.dispose();
