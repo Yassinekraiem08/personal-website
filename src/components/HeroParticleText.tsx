@@ -62,7 +62,7 @@ export default function HeroParticleText({
     scene.add(planeArea);
 
     const colorChange = new THREE.Color();
-    let particlesMesh: THREE.Points<THREE.BufferGeometry, THREE.ShaderMaterial> | null = null;
+    let particlesMesh: any | null = null;
     let geometryCopy: THREE.BufferGeometry | null = null;
     let particleStates: ParticleState[] = [];
     let animationFrame = 0;
