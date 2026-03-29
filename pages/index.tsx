@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import Github from '@/src/icons/Github.svg';
 import Image from 'next/image';
+import LinkedIn from '@/src/icons/LinkedIn.svg';
 import Link from 'next/link';
 
+import HeroParticleText from '@/src/components/HeroParticleText';
 import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
 import SectionHeading from '@/src/components/SectionHeading';
 import SectionShell from '@/src/components/SectionShell';
@@ -12,23 +15,26 @@ import {
   educationEntries,
   projectEntries,
 } from '@/src/content/siteContent';
-import { highlightPillars, siteConfig, skillGroups } from '@/src/config/site';
+import { siteConfig, skillGroups } from '@/src/config/site';
 
-const stats = [
-  { label: 'Focus', value: 'AI systems + software' },
-  { label: 'Approach', value: 'Engineer with founder energy' },
-  { label: 'Strength', value: 'Technical depth + execution' },
+const leftHeroWaves = [
+  'left-[-22rem] top-[-6rem] h-[44rem] w-[44rem] rotate-[10deg]',
+  'left-[-18rem] top-[1rem] h-[36rem] w-[36rem] rotate-[14deg]',
+  'left-[-14rem] top-[8rem] h-[28rem] w-[28rem] rotate-[18deg]',
+];
+
+const rightHeroWaves = [
+  'right-[-24rem] top-[-4rem] h-[48rem] w-[48rem] -rotate-[18deg]',
+  'right-[-18rem] top-[3rem] h-[40rem] w-[40rem] -rotate-[14deg]',
+  'right-[-12rem] top-[10rem] h-[31rem] w-[31rem] -rotate-[10deg]',
 ];
 
 export default function Home() {
-  const about = aboutContent;
   const projects = projectEntries;
   const career = careerEntries;
   const education = educationEntries;
   const featuredProjects = projects.slice(0, 3);
   const latestCareer = career.slice(0, 3);
-  const aboutPreview =
-    'Computer science student building intelligent systems with a long-term focus on AI, software, and high-leverage systems that matter.';
 
   return (
     <>
@@ -37,167 +43,175 @@ export default function Home() {
         <meta name="description" content={siteConfig.description} />
       </Head>
       <main>
-        <SectionShell className="pt-16 sm:pt-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="max-w-3xl">
-              <motion.p
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45 }}
-                className="mb-5 inline-flex rounded-full border border-sky-300/15 bg-sky-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.34em] text-sky-200"
-              >
-                {siteConfig.location}
-              </motion.p>
-              <motion.h1
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.05 }}
-                className="font-display text-5xl font-semibold tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
-              >
-                Yassine Kraiem
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.12 }}
-                className="mt-6 max-w-2xl text-xl font-medium leading-8 text-slate-200 sm:text-2xl"
-              >
-                Computer science student building ambitious AI systems,
-                high-impact software, and intelligent tools with research and
-                founder upside.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.2 }}
-                className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg"
-              >
-                I am interested in embodied AI, intelligent systems, and the kind of
-                engineering that moves from prototype to real-world leverage. I care
-                about building fast, thinking deeply, and working on systems that
-                compound.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.28 }}
-                className="mt-10 flex flex-wrap gap-4"
-              >
-                <Link
-                  href="/projects"
-                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
-                >
-                  View Projects
-                </Link>
-                <Link
-                  href={siteConfig.resumeHref}
-                  target="_blank"
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white transition hover:border-sky-300/35 hover:bg-white/[0.06]"
-                >
-                  Resume
-                </Link>
-                <Link
-                  href={siteConfig.contactHref}
-                  className="rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-sky-300/35 hover:text-white"
-                >
-                  Contact
-                </Link>
-              </motion.div>
-
-              <div className="mt-12 grid gap-4 sm:grid-cols-3">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur"
-                  >
-                    <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
-                      {stat.label}
-                    </p>
-                    <p className="mt-3 text-sm font-medium leading-6 text-white">
-                      {stat.value}
-                    </p>
-                  </div>
-                ))}
+        <SectionShell
+          animateOnView={false}
+          className="relative flex h-screen items-center overflow-hidden pt-0"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#131b33_0%,#070b17_58%,#04070f_100%)]" />
+          <div className="absolute inset-x-0 top-10 h-56 bg-gradient-to-b from-sky-400/8 to-transparent blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02),transparent_32%)]" />
+          {leftHeroWaves.map((waveClass, index) => (
+            <div
+              key={`left-wave-${index}`}
+              className={`absolute rounded-[45%] border border-indigo-300/[0.10] ${waveClass}`}
+            >
+              <div className="absolute inset-[7%] rounded-[45%] border border-indigo-300/[0.08]" />
+              <div className="absolute inset-[14%] rounded-[45%] border border-indigo-300/[0.07]" />
+              <div className="absolute inset-[21%] rounded-[45%] border border-indigo-300/[0.06]" />
+              <div className="absolute inset-[28%] rounded-[45%] border border-indigo-300/[0.05]" />
+            </div>
+          ))}
+          {rightHeroWaves.map((waveClass, index) => (
+            <div
+              key={`right-wave-${index}`}
+              className={`absolute rounded-[42%] border border-violet-300/[0.12] ${waveClass}`}
+            >
+              <div className="absolute inset-[6%] rounded-[42%] border border-violet-300/[0.10]" />
+              <div className="absolute inset-[12%] rounded-[42%] border border-violet-300/[0.08]" />
+              <div className="absolute inset-[18%] rounded-[42%] border border-violet-300/[0.07]" />
+              <div className="absolute inset-[24%] rounded-[42%] border border-violet-300/[0.06]" />
+              <div className="absolute inset-[30%] rounded-[42%] border border-violet-300/[0.05]" />
+            </div>
+          ))}
+          <HeroParticleText
+            lines={["Let's Immerse", 'With Yassine']}
+            className="z-[1]"
+          />
+          <div className="relative flex h-screen w-full flex-col">
+            <div className="mx-auto flex w-full max-w-7xl flex-1 items-start justify-center pt-14 text-center sm:pt-16">
+              <div className="sr-only">
+                <h1>Let&apos;s Immerse With Yassine</h1>
               </div>
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.18 }}
-              className="relative mx-auto w-full max-w-[430px]"
+              transition={{ duration: 0.6, delay: 0.42 }}
+              className="pointer-events-none absolute inset-x-0 bottom-32 z-[2] flex w-full items-center justify-center flex-col sm:bottom-10"
             >
-              <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-br from-sky-400/20 via-transparent to-emerald-300/10 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.05] p-4 shadow-glow backdrop-blur-xl">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[26px] border border-white/10">
-                  <Image
-                    priority
-                    src="/ProfilePicture.jpg"
-                    alt="Yassine Kraiem"
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 32vw, 90vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
-                    <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
-                      Current trajectory
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-200">
-                      AI engineering, research credibility, and product-level execution.
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
-                    <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
-                      Long-term direction
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-200">
-                      Embodied AI, robotics, and intelligent systems with real-world reach.
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-5 inline-flex w-fit items-center justify-center gap-6 rounded-xl bg-[#181430]/90 px-4 py-2 text-base font-medium text-slate-100 shadow-glow lg:mt-10 lg:px-7 lg:py-3">
+                Try clicking screen!
               </div>
+              <Link
+                href="#introduction"
+                className="pointer-events-auto group mt-5 inline-flex w-fit items-center justify-center gap-6 rounded-xl bg-[#181430]/90 px-4 py-2 text-center text-slate-200 shadow-glow transition hover:text-white lg:mt-10 lg:px-7 lg:py-3"
+              >
+                <span className="flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-white/80 p-2">
+                  <motion.span
+                    animate={{ y: [0, 24, 0] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+                    className="mt-1 h-3 w-3 rounded-full bg-white"
+                  />
+                </span>
+                <span className="text-xl font-medium tracking-[-0.03em] lg:text-2xl">
+                  Scroll Down
+                </span>
+              </Link>
             </motion.div>
           </div>
         </SectionShell>
 
-        <SectionShell>
-          <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr]">
-            <SectionHeading
-              eyebrow="About"
-              title="An international background with technical ambition."
-              description={aboutPreview}
-            />
-            <div className="grid gap-4 sm:grid-cols-3">
-              {highlightPillars.map((pillar) => (
-                <div
-                  key={pillar.title}
-                  className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
-                >
-                  <h3 className="font-display text-xl font-semibold text-white">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
-                    {pillar.description}
+        <SectionShell id="introduction" className="pt-24 sm:pt-28">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="text-[30px] font-black text-white xs:text-[40px] sm:text-[50px] md:text-[60px]">
+              Hey, I&apos;m Yassine!
+            </h2>
+
+            <div className="mt-6 flex items-center min-[1000px]:flex-row flex-col-reverse">
+              <div>
+                <div className="mt-4 max-w-3xl text-[17px] leading-[30px] text-slate-300">
+                  <p
+                    className="mt-4 w-full min-[1000px]:max-w-lg text-[17px] leading-[30px] text-slate-300"
+                    style={{ textAlign: 'justify' }}
+                  >
+                    I&apos;m a computer science student focused on AI engineering,
+                    software systems, and building products with real leverage.
+                    I&apos;m most interested in the kind of work that sits between
+                    technical depth and execution: systems that are useful,
+                    ambitious, and built to matter.
+                    <br />
+                    <br />
+                    I care about learning quickly, building with intention, and
+                    developing the taste and engineering judgment required for
+                    high-caliber software and intelligent systems work.
+                    <br />
+                    <br />
+                    If this resonates, check out my resume and links below, and feel
+                    free to reach out at{' '}
+                    <a href={`mailto:${siteConfig.email}`} className="text-link">
+                      {siteConfig.email}
+                    </a>
+                    .
                   </p>
                 </div>
-              ))}
+
+                <div className="mt-6 flex flex-wrap justify-center gap-5 sm:justify-start">
+                  <Link
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-3 py-2 text-white transition hover:border-sky-300/35"
+                  >
+                    <span className="mr-3 flex h-[40px] w-[40px] items-center justify-center">
+                      <LinkedIn />
+                    </span>
+                    <span className="text-[21px]">LinkedIn</span>
+                  </Link>
+                  <Link
+                    href={siteConfig.github}
+                    target="_blank"
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-3 py-2 text-white transition hover:border-sky-300/35"
+                  >
+                    <span className="mr-3 flex h-[40px] w-[40px] items-center justify-center">
+                      <Github />
+                    </span>
+                    <span className="text-[21px]">GitHub</span>
+                  </Link>
+                  <Link
+                    href={`mailto:${siteConfig.email}`}
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-3 py-2 text-white transition hover:border-sky-300/35"
+                  >
+                    <span className="mr-3 flex h-[40px] w-[40px] items-center justify-center text-[22px] font-semibold">
+                      @
+                    </span>
+                    <span className="text-[21px]">Email</span>
+                  </Link>
+                  <Link
+                    href={siteConfig.resumeHref}
+                    target="_blank"
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-8 py-3 text-white transition hover:border-sky-300/35"
+                  >
+                    <span className="text-[21px] font-bold">
+                      <span className="hidden sm:inline">View </span>Resume
+                    </span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="mx-auto w-full max-w-[420px]">
+                <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-sky-400/10 via-white/[0.03] to-transparent p-4">
+                  <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] border border-white/10 bg-slate-950/50">
+                      <Image
+                        src="/ProfilePicture.jpg"
+                        alt="Yassine Kraiem portrait"
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 30vw, 90vw"
+                      />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="mt-8 rounded-[28px] border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-6 sm:p-8">
-            <p className="max-w-4xl text-base leading-8 text-slate-300">
-              {about?.body?.length
-                ? 'I have built my path by combining academic discipline, international perspective, and a strong pull toward technology with leverage. The through-line is clear: learn fast, build systems that matter, and aim toward technical work with long-term consequence.'
-                : aboutPreview}
-            </p>
-            <Link
-              href="/about"
-              className="mt-6 inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
-            >
-              Read full story
-            </Link>
+
+            <div className="mt-8">
+              <Link
+                href="/about"
+                className="inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+              >
+                Read full story
+              </Link>
+            </div>
           </div>
         </SectionShell>
 

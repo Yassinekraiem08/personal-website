@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -19,30 +19,47 @@ export const navButtons = [
 export default function Header() {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6">
-      <div className="mx-auto max-w-6xl rounded-full border border-white/10 bg-slate-950/65 px-4 py-3 shadow-glow backdrop-blur-xl">
+    <header className="fixed top-0 z-50 w-full px-6 py-5 sm:px-16">
+      <div
+        className={`mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border border-white/10 bg-slate-950/65 px-4 py-3 shadow-glow backdrop-blur-xl transition sm:px-6 sm:py-4 ${
+          scrolled ? 'bg-slate-950/88' : ''
+        }`}
+      >
         <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative h-11 w-10 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="relative h-8 w-8 overflow-hidden rounded-xl border border-white/10 bg-white/5">
               <Image
                 priority
                 src="/Logo.png"
                 alt={`${siteConfig.name} logo`}
                 fill
                 className="object-cover"
-                sizes="40px"
+                sizes="32px"
               />
             </div>
             <div className="hidden min-w-0 sm:block">
-              <p className="font-display text-sm font-semibold tracking-[0.22em] text-white">
+              <p className="text-[20px] font-bold text-white">
                 {siteConfig.name}
               </p>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-2 lg:flex">
+          <nav className="hidden items-center gap-6 sm:flex">
             {navLinks.map((item) => {
               const isResumeLink = item.href === siteConfig.resumeHref;
               const isActive =
@@ -58,9 +75,9 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   target={isResumeLink ? '_blank' : undefined}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                  className={`rounded-full px-2 py-2 text-[18px] font-medium transition ${
                     isActive
-                      ? 'bg-white text-slate-950'
+                      ? 'text-white'
                       : 'text-slate-300 hover:bg-white/5 hover:text-white'
                   }`}
                 >
@@ -70,7 +87,7 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden items-center gap-5 sm:flex">
             <Link
               href={siteConfig.linkedin}
               target="_blank"
@@ -95,17 +112,11 @@ export default function Header() {
             >
               <X />
             </Link>
-            <Link
-              href="/projects"
-              className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
-            >
-              See work
-            </Link>
           </div>
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white sm:hidden"
             aria-label="Toggle navigation"
             onClick={() => setMobileOpen((value) => !value)}
           >
@@ -134,7 +145,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="mt-4 grid gap-2 border-t border-white/10 pt-4 lg:hidden"
+            className="mt-4 grid gap-2 border-t border-white/10 pt-4 sm:hidden"
           >
             {navLinks.map((item) => (
               <Link
