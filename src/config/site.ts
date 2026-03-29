@@ -18,27 +18,86 @@ export const siteConfig = {
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#research', label: 'Research' },
   { href: '/projects', label: 'Projects' },
   { href: siteConfig.resumeHref, label: 'Resume' },
+  { href: siteConfig.medium, label: 'Articles' },
   { href: '/contact', label: 'Contact' },
 ];
 
 export const skillGroups = [
   {
-    label: 'Core',
-    items: ['AI Systems', 'Software Engineering', 'Intelligent Systems', 'Product Thinking'],
+    label: 'Programming',
+    items: ['Python', 'C/C++', 'Java', 'JavaScript', 'TypeScript', 'SQL', 'MATLAB'],
   },
   {
-    label: 'Frontend',
-    items: ['Next.js', 'React', 'TypeScript', 'Responsive UI'],
+    label: 'Frameworks & Libraries',
+    items: ['PyTorch', 'TensorFlow', 'NumPy', 'Pandas', 'Scikit-learn', 'OpenCV', 'React.js', 'D3.js'],
   },
   {
-    label: 'Backend',
-    items: ['Node.js', 'APIs', 'System Design', 'Data Flows'],
+    label: 'AI & Machine Learning',
+    items: ['Transformers', 'Reinforcement Learning', 'Bayesian Inference', 'Generative AI', 'Representation Learning'],
   },
   {
-    label: 'Focus Areas',
-    items: ['Applied AI', 'Intelligent Systems', 'Automation', 'Builder-Led Execution'],
+    label: 'Robotics & Control',
+    items: ['MPC', 'Motion Planning', 'Kalman Filtering', 'SLAM', 'Human-Aware Navigation', 'Uncertainty Quantification'],
+  },
+  {
+    label: 'Tools & Platforms',
+    items: ['Git', 'GitHub', 'Linux', 'Docker', 'Jupyter', 'PyCharm', 'CLion', 'Vercel', 'Render', 'SQLite'],
+  },
+];
+
+export const awardHonors = [
+  {
+    title: 'Outstanding Computer Science Student Award',
+    context: 'Alma College',
+    year: '2024-2025',
+  },
+  {
+    title: 'Outstanding Computer Science Research Award',
+    context: 'Alma College',
+    year: '2025',
+  },
+  {
+    title: 'Departmental Honors in Computer Science',
+    context: 'Alma College',
+    year: '2025',
+    detail:
+      'Earned for presenting senior thesis research on Learning-Augmented Model Predictive Control for Human-Aware Robot Navigation.',
+  },
+  {
+    title: 'Ronald O. Kapp Honors Day Prize',
+    context: 'Alma College',
+    year: '2026',
+  },
+  {
+    title: 'Posey Global Fellowship',
+    context: 'Tokyo, Japan',
+    year: '$9,000 • 2024',
+    detail: 'Selected for a fully funded research internship experience with Woven by Toyota.',
+  },
+  {
+    title: 'Kinney Research Scholarship',
+    context: 'Alma College',
+    year: '$2,500 • 2025',
+  },
+  {
+    title: 'Posey Global Fellowship',
+    context: 'Istanbul, Turkey',
+    year: '$4,000 • 2023-2024',
+    detail: 'Selected for a competitive fellowship to teach computer science to Syrian refugees.',
+  },
+  {
+    title: 'BPA 1st Place, Project Management and Leadership',
+    context: 'Business Professionals of America',
+    year: '2024',
+  },
+  {
+    title: 'Outstanding Delegation',
+    context: 'National Model United Nations, New York',
+    year: '2023-2024',
   },
 ];
 

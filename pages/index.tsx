@@ -12,10 +12,9 @@ import SectionShell from '@/src/components/SectionShell';
 import {
   aboutContent,
   careerEntries,
-  educationEntries,
   projectEntries,
 } from '@/src/content/siteContent';
-import { siteConfig, skillGroups } from '@/src/config/site';
+import { awardHonors, siteConfig, skillGroups } from '@/src/config/site';
 
 const leftHeroWaves = [
   'left-[-22rem] top-[-6rem] h-[44rem] w-[44rem] rotate-[10deg]',
@@ -32,7 +31,6 @@ const rightHeroWaves = [
 export default function Home() {
   const projects = projectEntries;
   const career = careerEntries;
-  const education = educationEntries;
   const featuredProjects = projects.slice(0, 3);
   const latestCareer = career.slice(0, 3);
 
@@ -125,20 +123,23 @@ export default function Home() {
                     className="mt-4 w-full min-[1000px]:max-w-lg text-[17px] leading-[30px] text-slate-300"
                     style={{ textAlign: 'justify' }}
                   >
-                    I&apos;m a computer science student focused on AI engineering,
-                    software systems, and building products with real leverage.
-                    I&apos;m most interested in the kind of work that sits between
-                    technical depth and execution: systems that are useful,
-                    ambitious, and built to matter.
+                    I&apos;m a senior computer science student at Alma College
+                    building applications across AI and software engineering.
+                    My work focuses on turning ideas into systems that are not
+                    just technically sound, but genuinely useful, reliable, and
+                    impactful in practice — from AI-driven workflows and retrieval
+                    systems to full-stack applications.
                     <br />
                     <br />
-                    I care about learning quickly, building with intention, and
-                    developing the taste and engineering judgment required for
-                    high-caliber software and intelligent systems work.
+                    I&apos;ve also worked on research involving decision-making
+                    under uncertainty and system behavior, which shapes how I
+                    approach building technology that performs beyond ideal
+                    conditions. I&apos;m especially drawn to problems where strong
+                    engineering meets practical usefulness and real impact.
                     <br />
                     <br />
-                    If this resonates, check out my resume and links below, and feel
-                    free to reach out at{' '}
+                    If this resonates, check out my resume and links below, and
+                    feel free to reach out at{' '}
                     <a href={`mailto:${siteConfig.email}`} className="text-link">
                       {siteConfig.email}
                     </a>
@@ -150,39 +151,39 @@ export default function Home() {
                   <Link
                     href={siteConfig.linkedin}
                     target="_blank"
-                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-3 py-2 text-white transition hover:border-sky-300/35"
+                    className="mt-4 inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-[#181430]/90 px-4 py-2.5 text-white transition hover:border-sky-300/35"
                   >
-                    <span className="mr-3 flex h-[40px] w-[40px] items-center justify-center">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5">
                       <LinkedIn />
                     </span>
-                    <span className="text-[21px]">LinkedIn</span>
+                    <span className="text-sm font-semibold tracking-[0.01em]">LinkedIn</span>
                   </Link>
                   <Link
                     href={siteConfig.github}
                     target="_blank"
-                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-3 py-2 text-white transition hover:border-sky-300/35"
+                    className="mt-4 inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-[#181430]/90 px-4 py-2.5 text-white transition hover:border-sky-300/35"
                   >
-                    <span className="mr-3 flex h-[40px] w-[40px] items-center justify-center">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5">
                       <Github />
                     </span>
-                    <span className="text-[21px]">GitHub</span>
+                    <span className="text-sm font-semibold tracking-[0.01em]">GitHub</span>
                   </Link>
                   <Link
                     href={`mailto:${siteConfig.email}`}
-                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-3 py-2 text-white transition hover:border-sky-300/35"
+                    className="mt-4 inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-[#181430]/90 px-4 py-2.5 text-white transition hover:border-sky-300/35"
                   >
-                    <span className="mr-3 flex h-[40px] w-[40px] items-center justify-center text-[22px] font-semibold">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-[16px] font-semibold">
                       @
                     </span>
-                    <span className="text-[21px]">Email</span>
+                    <span className="text-sm font-semibold tracking-[0.01em]">Email Me</span>
                   </Link>
                   <Link
                     href={siteConfig.resumeHref}
                     target="_blank"
-                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-[#181430]/90 px-8 py-3 text-white transition hover:border-sky-300/35"
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-white px-5 py-2.5 text-slate-950 transition hover:bg-slate-200"
                   >
-                    <span className="text-[21px] font-bold">
-                      <span className="hidden sm:inline">View </span>Resume
+                    <span className="text-sm font-semibold tracking-[0.01em]">
+                      View Resume
                     </span>
                   </Link>
                 </div>
@@ -192,10 +193,10 @@ export default function Home() {
                 <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-sky-400/10 via-white/[0.03] to-transparent p-4">
                   <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] border border-white/10 bg-slate-950/50">
                       <Image
-                        src="/ProfilePicture.jpg"
+                        src="/profile-home.jpg"
                         alt="Yassine Kraiem portrait"
                         fill
-                        className="object-cover"
+                        className="object-cover object-[center_18%]"
                         sizes="(min-width: 1024px) 30vw, 90vw"
                       />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
@@ -207,11 +208,79 @@ export default function Home() {
             <div className="mt-8">
               <Link
                 href="/about"
-                className="inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+                className="inline-flex rounded-full border border-white/10 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
               >
-                Read full story
+                About Me
               </Link>
             </div>
+          </div>
+        </SectionShell>
+
+        <SectionShell id="experience">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Experience"
+              title="Software, leadership, and international work that points toward harder problems."
+              description="A separate place for the work history, leadership, and research-adjacent experience that has shaped how I build."
+            />
+            <Link
+              href={siteConfig.resumeHref}
+              target="_blank"
+              className="inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+            >
+              View Resume
+            </Link>
+          </div>
+          <div className="mt-10">
+            {latestCareer.length ? (
+              <div className="grid gap-4 lg:grid-cols-3">
+                {latestCareer.map((item) => (
+                  <div
+                    key={item._id}
+                    className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
+                  >
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <h3 className="font-display text-xl font-semibold text-white">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1 text-sm font-medium text-sky-200">
+                          {item.company}
+                        </p>
+                        {item.department || item.team ? (
+                          <p className="mt-2 text-sm text-slate-400">
+                            {[item.department, item.team].filter(Boolean).join(' • ')}
+                          </p>
+                        ) : null}
+                      </div>
+                      <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
+                        {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
+                      </p>
+                      <p className="text-sm leading-7 text-slate-300">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] p-6 text-sm leading-7 text-slate-400">
+                Experience entries can live here once we add your final roles, internships, leadership positions, and research appointments.
+              </div>
+            )}
+          </div>
+        </SectionShell>
+
+        <SectionShell id="research">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Research"
+              title="Research directions, thesis work, and technical questions worth pursuing."
+              description="A dedicated place for thesis work, research experience, and the problems I want to keep exploring."
+            />
+          </div>
+          <div className="mt-10 rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] p-6 text-sm leading-7 text-slate-400">
+            Research content will go here once we add your thesis, research experience, and current interests.
           </div>
         </SectionShell>
 
@@ -247,90 +316,61 @@ export default function Home() {
         </SectionShell>
 
         <SectionShell>
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr]">
-            <div>
-              <SectionHeading
-                eyebrow="Experience"
-                title="Early career momentum across software, leadership, and international work."
-                description="Experience that signals range, but with a clear center of gravity: technical growth, high ownership, and building toward harder problems."
-              />
-              <div className="mt-8 space-y-4">
-                {latestCareer.length ? (
-                  latestCareer.map((item) => (
+          <div>
+            <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+              <div>
+                <div className="mb-4">
+                  <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+                    Awards & Honors
+                  </h3>
+                </div>
+                <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
+                  <div className="mt-4 space-y-4">
+                    {awardHonors.map((award) => (
+                      <div key={`${award.title}-${award.year}`} className="border-b border-white/6 pb-4 last:border-b-0 last:pb-0">
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                          <div>
+                            <p className="text-sm font-semibold text-white">{award.title}</p>
+                            <p className="mt-1 text-sm text-sky-200">{award.context}</p>
+                          </div>
+                          <p className="text-xs uppercase tracking-[0.22em] text-slate-400">{award.year}</p>
+                        </div>
+                        {award.detail ? (
+                          <p className="mt-2 text-sm leading-6 text-slate-300">{award.detail}</p>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-4">
+                  <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+                    Technical Skills
+                  </h3>
+                </div>
+                <div className="grid gap-4">
+                  {skillGroups.map((group) => (
                     <div
-                      key={item._id}
+                      key={group.label}
                       className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
                     >
-                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                        <div>
-                          <h3 className="font-display text-xl font-semibold text-white">
-                            {item.title}
-                          </h3>
-                          <p className="mt-1 text-sm font-medium text-sky-200">
-                            {item.company}
-                          </p>
-                          {item.department || item.team ? (
-                            <p className="mt-2 text-sm text-slate-400">
-                              {[item.department, item.team].filter(Boolean).join(' • ')}
-                            </p>
-                          ) : null}
-                        </div>
-                        <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
-                          {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
-                        </p>
-                      </div>
-                      <p className="mt-4 text-sm leading-7 text-slate-300">
-                        {item.description}
+                      <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
+                        {group.label}
                       </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {group.items.map((item) => (
+                          <span
+                            key={item}
+                            className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-sm text-slate-200"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  ))
-                ) : (
-                  <div className="rounded-[24px] border border-dashed border-white/10 bg-white/[0.03] p-5 text-sm leading-7 text-slate-400">
-                    Experience highlights will appear here once we add your final resume entries.
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <SectionHeading
-                eyebrow="Skills"
-                title="A builder stack shaped by software, AI, and systems."
-                description="Broad enough to ship, focused enough to signal a clear direction."
-              />
-              <div className="mt-8 grid gap-4">
-                {skillGroups.map((group) => (
-                  <div
-                    key={group.label}
-                    className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
-                  >
-                    <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
-                      {group.label}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {group.items.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-sm text-slate-200"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-                <div className="rounded-[24px] border border-white/10 bg-gradient-to-br from-sky-500/10 to-emerald-400/5 p-5">
-                  <p className="text-xs uppercase tracking-[0.26em] text-slate-300">
-                    Education
-                  </p>
-                  <p className="mt-3 text-lg font-semibold text-white">
-                    {education[0]?.school || 'Education details coming soon'}
-                  </p>
-                  <p className="mt-2 text-sm leading-7 text-slate-300">
-                    Studying computer science while building practical systems and
-                    sharpening the research, product, and engineering instincts needed
-                    for high-leverage technical work.
-                  </p>
+                  ))}
                 </div>
               </div>
             </div>
