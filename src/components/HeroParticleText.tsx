@@ -199,7 +199,7 @@ export default function HeroParticleText({
       const yMid =
         ((geometry.boundingBox?.max.y ?? 0) - (geometry.boundingBox?.min.y ?? 0)) / 2.85;
 
-      const holeShapes = [];
+      const holeShapes: any[] = [];
       for (const shape of shapes) {
         if (shape.holes?.length) {
           holeShapes.push(...shape.holes);
@@ -207,7 +207,7 @@ export default function HeroParticleText({
       }
 
       const allShapes = [...shapes, ...holeShapes];
-      const points = [];
+      const points: any[] = [];
       const colors: number[] = [];
       const sizes: number[] = [];
 
