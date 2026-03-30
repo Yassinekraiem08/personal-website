@@ -11,8 +11,9 @@ import {
   aboutContent,
   careerEntries,
   projectEntries,
+  researchEntries,
 } from '@/src/content/siteContent';
-import { awardHonors, siteConfig, skillGroups } from '@/src/config/site';
+import { awardHonors, siteConfig } from '@/src/config/site';
 
 const leftHeroWaves = [
   'left-[-22rem] top-[-6rem] h-[44rem] w-[44rem] rotate-[10deg]',
@@ -29,6 +30,7 @@ const rightHeroWaves = [
 export default function Home() {
   const projects = projectEntries;
   const career = careerEntries;
+  const research = researchEntries;
   const featuredProjects = projects.slice(0, 3);
   const latestCareer = career.slice(0, 3);
 
@@ -185,11 +187,11 @@ export default function Home() {
 
         <SectionShell id="experience">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <SectionHeading
-              eyebrow="Experience"
-              title="Software, leadership, and international work that points toward harder problems."
-              description="A separate place for the work history, leadership, and research-adjacent experience that has shaped how I build."
-            />
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+                Work Experience
+              </p>
+            </div>
             <Link
               href={siteConfig.resumeHref}
               target="_blank"
@@ -221,7 +223,7 @@ export default function Home() {
                         ) : null}
                       </div>
                       <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
-                        {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
+                        {item.dateLabel || `${item.startYear} - ${item.endYear === 9999 ? 'Present' : item.endYear}`}
                       </p>
                       <p className="text-sm leading-7 text-slate-300">
                         {item.description}
@@ -240,24 +242,62 @@ export default function Home() {
 
         <SectionShell id="research">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <SectionHeading
-              eyebrow="Research"
-              title="Research directions, thesis work, and technical questions worth pursuing."
-              description="A dedicated place for thesis work, research experience, and the problems I want to keep exploring."
-            />
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+                Research
+              </p>
+            </div>
           </div>
-          <div className="mt-10 rounded-[28px] border border-dashed border-white/10 bg-white/[0.03] p-6 text-sm leading-7 text-slate-400">
-            Research content will go here once we add your thesis, research experience, and current interests.
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {research.map((item) => (
+              <article
+                key={item._id}
+                className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
+              >
+                <div className="flex h-full flex-col gap-4">
+                  <div>
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <h3 className="font-display text-xl font-semibold text-white">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1 text-sm font-medium text-sky-200">
+                          {item.institution}
+                        </p>
+                        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-400">
+                          <span>{item.subtitle}</span>
+                          {item.location ? <span>{item.location}</span> : null}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm leading-7 text-slate-300">
+                    {item.description}
+                  </p>
+                  {item.linkHref ? (
+                    <div className="pt-1">
+                      <Link
+                        href={item.linkHref}
+                        target="_blank"
+                        className="inline-flex rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+                      >
+                        {item.linkLabel || 'View'}
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            ))}
           </div>
         </SectionShell>
 
         <SectionShell>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <SectionHeading
-              eyebrow="Selected Work"
-              title="Projects that show systems thinking, implementation depth, and product instinct."
-              description="A mix of technical builds, interface work, and ambitious experiments that point toward larger systems."
-            />
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+                Selected Projects
+              </p>
+            </div>
             <Link
               href="/projects"
               className="inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
@@ -283,58 +323,29 @@ export default function Home() {
         </SectionShell>
 
         <SectionShell>
-          <div>
-            <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-              <div>
-                <div className="mb-4">
-                  <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">
-                    Awards & Honors
-                  </h3>
-                </div>
-                <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
-                  <div className="mt-4 space-y-4">
-                    {awardHonors.map((award) => (
-                      <div key={`${award.title}-${award.year}`} className="border-b border-white/6 pb-4 last:border-b-0 last:pb-0">
-                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                          <div>
-                            <p className="text-sm font-semibold text-white">{award.title}</p>
-                          </div>
-                          <p className="text-xs uppercase tracking-[0.22em] text-slate-400">{award.year}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div className="mb-4">
-                  <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">
-                    Technical Skills
-                  </h3>
-                </div>
-                <div className="grid gap-4">
-                  {skillGroups.map((group) => (
-                    <div
-                      key={group.label}
-                      className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
-                    >
-                      <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
-                        {group.label}
+          <div className="mx-auto mt-8 max-w-3xl">
+            <div className="mb-4 text-center">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+                Awards & Honors
+              </h3>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 sm:p-6">
+              <div className="space-y-4">
+                {awardHonors.map((award) => (
+                  <div
+                    key={`${award.title}-${award.year}`}
+                    className="border-b border-white/6 pb-4 last:border-b-0 last:pb-0"
+                  >
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <p className="text-sm font-semibold text-white sm:text-[15px]">
+                        {award.title}
                       </p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {group.items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-sm text-slate-200"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
+                      <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
+                        {award.year}
+                      </p>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

@@ -12,11 +12,13 @@ declare global {
 
   interface CareerEntry extends CMSDocument {
     company: string;
+    dateLabel?: string;
     department: string;
     team: string;
     description: string;
     endYear: number;
     image: Image;
+    location?: string;
     startYear: number;
     title: string;
   }

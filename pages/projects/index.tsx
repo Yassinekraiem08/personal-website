@@ -43,7 +43,6 @@ export default function Projects() {
             <SectionHeading
               eyebrow="Projects"
               title="A portfolio of technical builds with ambition behind them."
-              description="Projects spanning algorithm visualization, software systems, product experiments, and AI-oriented work."
             />
             <div className="w-full max-w-md">
               <label htmlFor="project-search" className="sr-only">
@@ -58,21 +57,6 @@ export default function Projects() {
                 className="w-full rounded-full border border-white/10 bg-slate-950/70 px-5 py-3 text-sm text-white outline-none ring-0 transition placeholder:text-slate-500 focus:border-sky-300/35"
               />
             </div>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
-              {projects.length} total projects
-            </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
-              AI systems
-            </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
-              Software engineering
-            </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
-              Product thinking
-            </span>
           </div>
 
           {currentProjects.length ? (

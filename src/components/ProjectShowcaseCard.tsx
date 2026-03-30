@@ -31,7 +31,7 @@ export default function ProjectShowcaseCard({
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
       </div>
       <div className="space-y-4 p-5 sm:p-6">
-        <div className="flex items-start justify-between gap-4">
+        <div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.24em] text-sky-200/70">
               {project.startYear}
@@ -40,9 +40,6 @@ export default function ProjectShowcaseCard({
               {project.name}
             </h3>
           </div>
-          <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[11px] font-medium text-emerald-200">
-            Featured
-          </span>
         </div>
         <p className="text-sm leading-6 text-slate-300">
           {project.description}

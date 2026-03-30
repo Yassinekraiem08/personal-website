@@ -29,9 +29,119 @@ export const aboutContent: AboutEntry = {
   ],
 };
 
-export const careerEntries: CareerEntry[] = [];
+export const careerEntries: CareerEntry[] = [
+  {
+    _id: 'career-recipeone',
+    _type: 'career',
+    title: 'Founder & AI Software Engineer',
+    company: 'RecipeOne',
+    department: '',
+    team: '',
+    location: 'Alma, MI',
+    dateLabel: 'Jul 2025 — Jan 2026',
+    startYear: 2025,
+    endYear: 2026,
+    image: {
+      src: '/profile-home.jpg',
+      alt: 'RecipeOne',
+    },
+    description:
+      'Built a multi-tenant B2B SaaS platform for institutional foodservice operations, enabling recipe planning, procurement, and inventory workflows across multi-site facilities. Designed a scalable PostgreSQL and REST API backend spanning 15+ entities and 30+ relational tables, and implemented automated unit conversion and yield pipelines across 7,000+ ingredient records to generate purchasing quantities and cost estimates.',
+  },
+  {
+    _id: 'career-kinney-research-fellow',
+    _type: 'career',
+    title: 'Lead Software Engineer (Full-stack) — Contract',
+    company: 'Kinney Research Fellow — Autonomous Drone Delivery Simulation Platform',
+    department: '',
+    team: '',
+    location: 'Alma, MI',
+    dateLabel: 'Feb 2025 — Jul 2025',
+    startYear: 2025,
+    endYear: 2025,
+    image: {
+      src: '/profile-home.jpg',
+      alt: 'Kinney Research Fellow',
+    },
+    description:
+      'Designed and built a full-stack simulation platform modeling autonomous drone delivery under dynamic weather and demand, running 1,000+ delivery scenarios for evaluation and benchmarking. Engineered graph-based and heuristic routing and scheduling methods that improved delivery time by 18% and reduced energy consumption by 12% across fleet operations.',
+  },
+  {
+    _id: 'career-listflowai',
+    _type: 'career',
+    title: 'Co-Founder & AI Software Engineer',
+    company: 'ListFlowAI',
+    department: '',
+    team: '',
+    location: 'Remote — Washington, D.C.',
+    dateLabel: 'Oct 2023 — Apr 2025',
+    startYear: 2023,
+    endYear: 2025,
+    image: {
+      src: '/profile-home.jpg',
+      alt: 'ListFlowAI',
+    },
+    description:
+      'Co-founded an AI-powered B2B SaaS automation platform used by 200+ users, processing 5,000+ inbound leads through LLM-driven enrichment, classification, and routing workflows. Architected backend services and data pipelines with Python, FastAPI, and PostgreSQL to extract structured data from emails, forms, and CRM exports, reducing manual lead processing by 80%.',
+  },
+  {
+    _id: 'career-alma-college-ta',
+    _type: 'career',
+    title: 'Teaching Assistant, Tutor & Mentor',
+    company: 'Alma College',
+    department: 'MTH-121 / CSC-121 / CSC-122 / CSC-230 / CSC-240 / CSC-310 / CSC-420',
+    team: '',
+    location: 'Alma, MI',
+    dateLabel: '2022 — 2025',
+    startYear: 2022,
+    endYear: 2025,
+    image: {
+      src: '/profile-home.jpg',
+      alt: 'Alma College',
+    },
+    description:
+      'Mentored 70+ students across algorithms, data structures, debugging, and core computer science coursework, strengthening analytical thinking and software design skills through personalized, hands-on guidance.',
+  },
+];
 
 export const educationEntries: EducationEntry[] = [];
+
+export const researchEntries = [
+  {
+    _id: 'research-campus-drone-delivery-system',
+    title: 'Campus Drone Delivery System',
+    institution: 'Colorado State University',
+    subtitle: 'Research-Based Web Simulation Project',
+    dateLabel: '2024',
+    location: '',
+    description:
+      'Built a web-based simulation modeling autonomous drone deliveries under dynamic weather and demand, capturing realistic last-mile logistics behavior. Designed adaptive route optimization and scheduling algorithms that reduced average delivery time by 18% and energy consumption by 12% compared with baseline heuristics, and developed interactive analytics dashboards to visualize fleet performance in real time.',
+  },
+  {
+    _id: 'research-map-pathfinding-visualizer',
+    title: 'Undergraduate Research Assistant',
+    institution: 'Alma College',
+    subtitle: 'with Dr. Andrew Thall',
+    dateLabel: '2024 — 2025',
+    location: '',
+    linkHref: '/pathfinding-poster-session.pdf',
+    linkLabel: 'View poster',
+    description:
+      'Led undergraduate research on learning-augmented path planning under dynamic uncertainty, presenting the work in poster form through a benchmark-driven study of safety, efficiency, and robustness trade-offs. The project combined interactive visualization, algorithm analysis, and controlled experiments to evaluate how replanning frequency and heuristic design affect navigation performance in changing environments.',
+  },
+  {
+    _id: 'research-senior-thesis',
+    title: 'Senior Thesis',
+    institution: 'Alma College',
+    subtitle: 'Learning-Augmented Model Predictive Control for Human-Aware Robot Navigation',
+    dateLabel: '2025',
+    location: '',
+    linkHref: '/senior-thesis.pdf',
+    linkLabel: 'View thesis',
+    description:
+      'Built a thesis project focused on learning-augmented model predictive control for human-aware robot navigation, examining how predictive control, uncertainty, and social navigation constraints interact in dynamic environments. The work ties together autonomy, decision-making under uncertainty, and intelligent systems with an emphasis on methods that remain reliable beyond idealized settings.',
+  },
+];
 
 export const projectEntries: ProjectEntry[] = [
   {

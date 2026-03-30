@@ -85,6 +85,11 @@ export default function Resume() {
                             <p className="mt-1 text-sm font-medium text-sky-200">
                               {item.company}
                             </p>
+                            {item.location ? (
+                              <p className="mt-2 text-sm text-slate-400">
+                                {item.location}
+                              </p>
+                            ) : null}
                             {item.department || item.team ? (
                               <p className="mt-2 text-sm text-slate-400">
                                 {[item.department, item.team].filter(Boolean).join(' • ')}
@@ -93,7 +98,7 @@ export default function Resume() {
                           </div>
                         </div>
                         <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
-                          {item.startYear} - {item.endYear === 9999 ? 'Present' : item.endYear}
+                          {item.dateLabel || `${item.startYear} - ${item.endYear === 9999 ? 'Present' : item.endYear}`}
                         </p>
                       </div>
                       <p className="mt-5 text-sm leading-7 text-slate-300">
