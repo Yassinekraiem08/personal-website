@@ -301,9 +301,6 @@ export default function Home() {
                           </div>
                           <p className="text-xs uppercase tracking-[0.22em] text-slate-400">{award.year}</p>
                         </div>
-                        {award.detail ? (
-                          <p className="mt-2 text-sm leading-6 text-slate-300">{award.detail}</p>
-                        ) : null}
                       </div>
                     ))}
                   </div>
