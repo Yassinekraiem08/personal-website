@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-import Github from '@/src/icons/Github.svg';
 import Image from 'next/image';
-import LinkedIn from '@/src/icons/LinkedIn.svg';
 import Link from 'next/link';
 
 import HeroParticleText from '@/src/components/HeroParticleText';
@@ -138,8 +136,8 @@ export default function Home() {
                     engineering meets practical usefulness and real impact.
                     <br />
                     <br />
-                    If this resonates, check out my resume and links below, and
-                    feel free to reach out at{' '}
+                    If you’d like to learn more, feel free to browse my work, view
+                    my resume, or reach out at{' '}
                     <a href={`mailto:${siteConfig.email}`} className="text-link">
                       {siteConfig.email}
                     </a>
@@ -147,44 +145,21 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-6 flex flex-wrap justify-center gap-5 sm:justify-start">
-                  <Link
-                    href={siteConfig.linkedin}
-                    target="_blank"
-                    className="mt-4 inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-[#181430]/90 px-4 py-2.5 text-white transition hover:border-sky-300/35"
-                  >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5">
-                      <LinkedIn />
-                    </span>
-                    <span className="text-sm font-semibold tracking-[0.01em]">LinkedIn</span>
-                  </Link>
-                  <Link
-                    href={siteConfig.github}
-                    target="_blank"
-                    className="mt-4 inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-[#181430]/90 px-4 py-2.5 text-white transition hover:border-sky-300/35"
-                  >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5">
-                      <Github />
-                    </span>
-                    <span className="text-sm font-semibold tracking-[0.01em]">GitHub</span>
-                  </Link>
-                  <Link
-                    href={`mailto:${siteConfig.email}`}
-                    className="mt-4 inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-[#181430]/90 px-4 py-2.5 text-white transition hover:border-sky-300/35"
-                  >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-[16px] font-semibold">
-                      @
-                    </span>
-                    <span className="text-sm font-semibold tracking-[0.01em]">Email Me</span>
-                  </Link>
+                <div className="mt-6 flex flex-wrap justify-center gap-4 sm:justify-start">
                   <Link
                     href={siteConfig.resumeHref}
                     target="_blank"
-                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/10 bg-white px-5 py-2.5 text-slate-950 transition hover:bg-slate-200"
+                    className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white px-5 py-2.5 text-slate-950 transition hover:bg-slate-200"
                   >
                     <span className="text-sm font-semibold tracking-[0.01em]">
                       View Resume
                     </span>
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="inline-flex rounded-full border border-white/10 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+                  >
+                    About Me
                   </Link>
                 </div>
               </div>
@@ -205,14 +180,6 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-8">
-              <Link
-                href="/about"
-                className="inline-flex rounded-full border border-white/10 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
-              >
-                About Me
-              </Link>
-            </div>
           </div>
         </SectionShell>
 
@@ -331,7 +298,6 @@ export default function Home() {
                         <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                           <div>
                             <p className="text-sm font-semibold text-white">{award.title}</p>
-                            <p className="mt-1 text-sm text-sky-200">{award.context}</p>
                           </div>
                           <p className="text-xs uppercase tracking-[0.22em] text-slate-400">{award.year}</p>
                         </div>
@@ -377,37 +343,6 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell className="pb-20">
-          <div className="rounded-[32px] border border-white/10 bg-white/[0.05] p-8 shadow-glow sm:p-10">
-            <SectionHeading
-              eyebrow="Contact"
-              title="Open to ambitious conversations."
-              description="If something in the work resonates, let's continue it on a dedicated contact page."
-            />
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href={siteConfig.contactHref}
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
-              >
-                Contact page
-              </Link>
-              <Link
-                href={siteConfig.github}
-                target="_blank"
-                className="rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
-              >
-                GitHub
-              </Link>
-              <Link
-                href={siteConfig.resumeHref}
-                target="_blank"
-                className="rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
-              >
-                View resume
-              </Link>
-            </div>
-          </div>
-        </SectionShell>
       </main>
     </>
   );

@@ -18,7 +18,7 @@ export const siteConfig = {
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/#experience', label: 'Experience' },
+  { href: '/#experience', label: 'Work' },
   { href: '/#research', label: 'Research' },
   { href: '/projects', label: 'Projects' },
   { href: siteConfig.resumeHref, label: 'Resume' },
@@ -64,8 +64,6 @@ export const awardHonors = [
     title: 'Departmental Honors in Computer Science',
     context: 'Alma College',
     year: '2025',
-    detail:
-      'Earned for presenting senior thesis research on Learning-Augmented Model Predictive Control for Human-Aware Robot Navigation.',
   },
   {
     title: 'Ronald O. Kapp Honors Day Prize',
@@ -75,29 +73,17 @@ export const awardHonors = [
   {
     title: 'Posey Global Fellowship',
     context: 'Tokyo, Japan',
-    year: '$9,000 • 2024',
-    detail: 'Selected for a fully funded research internship experience with Woven by Toyota.',
+    year: '2024',
   },
   {
     title: 'Kinney Research Scholarship',
     context: 'Alma College',
-    year: '$2,500 • 2025',
-  },
-  {
-    title: 'Posey Global Fellowship',
-    context: 'Istanbul, Turkey',
-    year: '$4,000 • 2023-2024',
-    detail: 'Selected for a competitive fellowship to teach computer science to Syrian refugees.',
+    year: '2025',
   },
   {
     title: 'BPA 1st Place, Project Management and Leadership',
     context: 'Business Professionals of America',
     year: '2024',
-  },
-  {
-    title: 'Outstanding Delegation',
-    context: 'National Model United Nations, New York',
-    year: '2023-2024',
   },
 ];
 
