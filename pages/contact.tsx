@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import PageContentBox from '@/src/components/PageContentBox';
-import SectionHeading from '@/src/components/SectionHeading';
 import { siteConfig } from '@/src/config/site';
 
 export default function Contact() {
@@ -19,9 +18,9 @@ export default function Contact() {
         <PageContentBox>
           <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="space-y-6">
-              <SectionHeading
-                title="Let's Connect"
-              />
+              <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Let&apos;s Connect
+              </h1>
               <p className="max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
                 Thanks for stopping by - I appreciate you taking the time to
                 visit my site. I welcome your feedback, questions, and
