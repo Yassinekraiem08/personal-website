@@ -15,7 +15,7 @@ export default function ProjectShowcaseCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="group overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] shadow-glow backdrop-blur"
+      className="group overflow-hidden rounded-[24px] border border-slate-800/80 bg-slate-950/80"
     >
       <div className="relative aspect-[16/7] overflow-hidden border-b border-white/10 bg-slate-950/70">
         <Image
@@ -48,7 +48,7 @@ export default function ProjectShowcaseCard({
           {project.tools.slice(0, 4).map((tool) => (
             <span
               key={tool}
-              className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[11px] font-medium text-slate-200"
+              className="rounded-full border border-white/10 bg-slate-900/80 px-2.5 py-1 text-[11px] font-medium text-slate-200"
             >
               {tool}
             </span>

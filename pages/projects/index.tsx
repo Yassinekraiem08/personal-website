@@ -37,13 +37,8 @@ export default function Projects() {
         />
       </Head>
       <main>
-        <PageContentBox>
+        <PageContentBox className="border-slate-800/80 bg-slate-950/75 shadow-none backdrop-blur-none">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
-                Projects
-              </p>
-            </div>
             <div className="w-full max-w-md">
               <label htmlFor="project-search" className="sr-only">
                 Search projects

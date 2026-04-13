@@ -73,38 +73,47 @@ export default function About() {
             <div className="mt-8 rounded-[28px] border border-white/10 bg-slate-950/40 p-6 sm:p-8">
               <div className="space-y-6 text-base leading-8 text-slate-300 sm:text-lg">
                 <p>
-                  I grew up in Tunisia, and the thing about moving across countries,
-                  languages, and cultures is that you learn to adapt before you
-                  learn to be comfortable. That shaped everything, how I approach
-                  unfamiliar problems, how quickly I build from scratch, and why I
-                  gravitate toward systems that need to perform under uncertainty,
-                  not just under ideal conditions.
+                  I grew up in Tunis. Not in a place with much of a tech scene -
+                  there was no startup culture,
+                  no CS pipeline, no one around me building software. But there
+                  was a feeling I could not shake: that the things I used every
+                  day, apps, tools, systems, could be so much better. And that
+                  maybe I could be the one to make them better.
                 </p>
                 <p>
-                  My first real project was not a class assignment, it was a
-                  startup. In high school, I launched Trainme, an app connecting
-                  tennis coaches with students. It did not become the next big
-                  thing. But it taught me what no textbook could: building
-                  something people actually use requires resilience, creativity,
-                  and the willingness to keep going after things break.
+                  When I was in high school, I built an app called Trainme. It
+                  connected tennis coaches with students. It was not good. The UI
+                  was rough, the code was messy, and almost no one used it. But
+                  someone did. And the moment a stranger opened something I made
+                  and actually tried to use it, that was it. I knew what I wanted
+                  to do for the rest of my life.
                 </p>
                 <p>
-                  That early experience lit something in me. Since then, I have
-                  built a RAG-based AI decision support system that indexes
-                  hundreds of documents with hallucination guardrails, a natural
-                  language analytics platform that translates plain English into
-                  SQL across complex databases, and AI workflow orchestrators that
-                  classify and prioritize real operational data. Every project
-                  pushed me deeper into the same question: how do you build AI
-                  that does not just perform on a benchmark, but actually holds up
-                  when the world gets messy?
+                  I left Tunisia at 18. Moved to the US alone, learned to
+                  navigate a country where I did not know anyone, in a language
+                  that was not my first, on a visa that reminded me every
+                  semester that none of this was guaranteed. That kind of
+                  pressure does not break you, it recalibrates you. You stop
+                  wasting time on things that do not matter. You learn to build
+                  fast, adapt faster, and never assume the ground beneath you is
+                  stable.
                 </p>
                 <p>
-                  Right now, I am heading to Columbia for graduate studies in AI,
-                  focused on bridging the gap between theory and practice, and
-                  building the kind of systems that create measurable impact at
-                  scale. Long-term, I want to build products that genuinely change
-                  how people interact with intelligent systems.
+                  Since then, I have built AI systems that actually get used, a
+                  RAG decision-support platform that indexes hundreds of
+                  documents with hallucination guardrails, a natural language
+                  analytics engine that turns plain English into SQL across
+                  complex databases, workflow orchestrators that classify and
+                  route real operational data. Every one of them started the same
+                  way: someone had a problem, and I would not stop until the
+                  system solved it under real conditions, not just clean ones.
+                </p>
+                <p>
+                  Now I&apos;m heading to Columbia to go deeper, to close the gap
+                  between what AI can do in a lab and what it can do in the
+                  world. But honestly, the destination was never a school or a
+                  title. It&apos;s the feeling I got in Tunis when that stranger
+                  opened my app. I&apos;m still chasing that.
                 </p>
               </div>
             </div>
