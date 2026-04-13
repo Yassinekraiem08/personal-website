@@ -20,7 +20,7 @@ module.exports = {
         display: ['var(--font-display)', 'sans-serif'],
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(255,255,255,0.05), 0 24px 80px rgba(6, 10, 24, 0.45)',
+        glow: '0 24px 80px rgba(6, 10, 24, 0.45)',
       },
       backgroundImage: {
         'grid-fade':

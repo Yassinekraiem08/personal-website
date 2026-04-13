@@ -20,7 +20,7 @@ export default function Resume() {
   return (
     <>
       <Head>
-        <title>Resume | {siteConfig.name}</title>
+        <title>{`Resume | ${siteConfig.name}`}</title>
         <meta
           name="description"
           content="Experience, education, and key achievements for Yassine Kraiem."

@@ -15,7 +15,7 @@ export default function Project({ project }: ProjectProps) {
   return (
     <>
       <Head>
-        <title>{project.name} | {siteConfig.name}</title>
+        <title>{`${project.name} | ${siteConfig.name}`}</title>
         <meta
           name="description"
           content={`Project detail page for ${project.name} by ${siteConfig.name}.`}

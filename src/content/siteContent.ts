@@ -49,27 +49,27 @@ export const careerEntries: CareerEntry[] = [
       'Built a multi-tenant B2B SaaS platform for institutional foodservice operations, enabling recipe planning, procurement, and inventory workflows across multi-site facilities. Designed a scalable PostgreSQL and REST API backend spanning 15+ entities and 30+ relational tables, and implemented automated unit conversion and yield pipelines across 7,000+ ingredient records to generate purchasing quantities and cost estimates.',
   },
   {
-    _id: 'career-kinney-research-fellow',
+    _id: 'career-eat-pro-japan',
     _type: 'career',
-    title: 'Lead Software Engineer (Full-stack) — Contract',
-    company: 'Kinney Research Fellow — Autonomous Drone Delivery Simulation Platform',
+    title: 'Software Engineering Intern',
+    company: 'EAT PRO JAPAN',
     department: '',
     team: '',
-    location: 'Alma, MI',
-    dateLabel: 'Feb 2025 — Jul 2025',
-    startYear: 2025,
-    endYear: 2025,
+    location: 'Tokyo, Japan',
+    dateLabel: 'May 2024 — Aug 2024',
+    startYear: 2024,
+    endYear: 2024,
     image: {
       src: '/profile-home.jpg',
-      alt: 'Kinney Research Fellow',
+      alt: 'EAT PRO JAPAN',
     },
     description:
-      'Designed and built a full-stack simulation platform modeling autonomous drone delivery under dynamic weather and demand, running 1,000+ delivery scenarios for evaluation and benchmarking. Engineered graph-based and heuristic routing and scheduling methods that improved delivery time by 18% and reduced energy consumption by 12% across fleet operations.',
+      'Built and improved web features for a food service platform supporting restaurant operations and customer engagement. Developed backend APIs and frontend components that strengthened core product functionality and improved responsiveness and usability, while collaborating across product and engineering to translate requirements into production-ready features.',
   },
   {
     _id: 'career-listflowai',
     _type: 'career',
-    title: 'Co-Founder & AI Software Engineer',
+    title: 'Co-Founder & Software Engineer',
     company: 'ListFlowAI',
     department: '',
     team: '',
@@ -144,6 +144,70 @@ export const researchEntries = [
 ];
 
 export const projectEntries: ProjectEntry[] = [
+  {
+    _id: 'project-autonomous-drone-delivery-simulation-platform',
+    _type: 'project',
+    name: 'Autonomous Drone Delivery Simulation Platform',
+    slug: {
+      _type: 'slug',
+      current: 'autonomous-drone-delivery-simulation-platform',
+    },
+    startYear: 2025,
+    description:
+      'Full-stack simulation platform for autonomous drone delivery under dynamic weather and demand, built for evaluation, benchmarking, and route optimization research.',
+    tools: ['Python', 'React.js', 'Full-stack Systems', 'Simulation', 'Optimization'],
+    mainImage: {
+      src: '/drone-delivery-logo.png',
+      alt: 'Autonomous Drone Delivery Simulation Platform project cover',
+      aspectRatio: 1.7,
+      contain: true,
+    },
+    body: [
+      {
+        type: 'paragraph',
+        text:
+          'Autonomous Drone Delivery Simulation Platform is a full-stack system designed to model autonomous drone delivery under dynamic weather and demand, enabling scenario-based evaluation of delivery performance, route quality, and fleet behavior.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Key results',
+      },
+      {
+        type: 'list',
+        style: 'bullet',
+        items: [
+          'Executed more than 1,000 simulated delivery scenarios for system evaluation and benchmarking.',
+          'Improved delivery time by 18% through graph-based and heuristic route optimization.',
+          'Reduced energy consumption by 12% across simulated fleet operations.',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'What I built',
+      },
+      {
+        type: 'list',
+        style: 'bullet',
+        items: [
+          'Designed and built a full-stack simulation platform for modeling autonomous drone delivery under dynamic weather and demand.',
+          'Engineered route optimization and scheduling methods using graph-based and heuristic approaches.',
+          'Used the platform for evaluation, experimentation, and performance benchmarking across delivery scenarios.',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Why this matters',
+      },
+      {
+        type: 'paragraph',
+        text:
+          'Autonomous delivery systems have to perform under changing operational conditions, not static assumptions. This project focused on evaluating how routing, scheduling, and environmental variability shape efficiency and system-level performance.',
+      },
+    ],
+  },
   {
     _id: 'project-text-to-sql-analytics-system',
     _type: 'project',

@@ -9,7 +9,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact | {siteConfig.name}</title>
+        <title>{`Contact | ${siteConfig.name}`}</title>
         <meta
           name="description"
           content={`Contact ${siteConfig.name} for opportunities, collaborations, and conversations around AI, robotics, and software engineering.`}

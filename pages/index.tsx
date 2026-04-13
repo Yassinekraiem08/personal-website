@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import HeroParticleText from '@/src/components/HeroParticleText';
 import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
 import SectionHeading from '@/src/components/SectionHeading';
 import SectionShell from '@/src/components/SectionShell';
@@ -14,6 +14,11 @@ import {
   researchEntries,
 } from '@/src/content/siteContent';
 import { awardHonors, siteConfig } from '@/src/config/site';
+
+const HeroParticleText = dynamic(
+  () => import('@/src/components/HeroParticleText'),
+  { ssr: false }
+);
 
 const leftHeroWaves = [
   'left-[-22rem] top-[-6rem] h-[44rem] w-[44rem] rotate-[10deg]',
@@ -37,7 +42,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{siteConfig.name} | AI Engineer and Systems Builder</title>
+        <title>{`${siteConfig.name} | AI Engineer and Systems Builder`}</title>
         <meta name="description" content={siteConfig.description} />
       </Head>
       <main>

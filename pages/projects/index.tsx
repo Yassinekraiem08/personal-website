@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 import PageContentBox from '@/src/components/PageContentBox';
 import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
-import SectionHeading from '@/src/components/SectionHeading';
 import { projectEntries } from '@/src/content/siteContent';
 import { siteConfig } from '@/src/config/site';
 
@@ -31,7 +30,7 @@ export default function Projects() {
   return (
     <>
       <Head>
-        <title>Projects | {siteConfig.name}</title>
+        <title>{`Projects | ${siteConfig.name}`}</title>
         <meta
           name="description"
           content="Selected projects by Yassine Kraiem across software engineering, AI systems, and product-focused builds."
@@ -40,10 +39,11 @@ export default function Projects() {
       <main>
         <PageContentBox>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              eyebrow="Projects"
-              title="A portfolio of technical builds with ambition behind them."
-            />
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+                Projects
+              </p>
+            </div>
             <div className="w-full max-w-md">
               <label htmlFor="project-search" className="sr-only">
                 Search projects
