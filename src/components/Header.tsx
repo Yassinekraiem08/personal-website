@@ -42,14 +42,14 @@ export default function Header() {
       >
         <div className="flex w-full items-center">
           <Link href="/" className="flex flex-shrink-0 items-center gap-3">
-            <div className="relative h-8 w-8 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+            <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-white/10 bg-white/5">
               <Image
                 priority
                 src="/Logo.png"
                 alt={`${siteConfig.name} logo`}
                 fill
                 className="object-cover"
-                sizes="32px"
+                sizes="36px"
               />
             </div>
             <div className="hidden min-w-0 sm:block">
