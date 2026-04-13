@@ -5,12 +5,6 @@ import PageContentBox from '@/src/components/PageContentBox';
 import SectionHeading from '@/src/components/SectionHeading';
 import { siteConfig } from '@/src/config/site';
 
-const storyPoints = [
-  'International perspective shaped by movement across cultures, institutions, and disciplines.',
-  'A strong pull toward AI, robotics, and software systems with real-world consequence.',
-  'Motivated by hard problems, technical range, and building things that scale beyond a single project.',
-];
-
 export default function About() {
   return (
     <>
@@ -29,27 +23,35 @@ export default function About() {
                 Building intelligence that holds up in the real world.
               </h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
-                I am a computer science student focused on AI engineering,
-                software systems, and the long arc toward robotics and embodied
-                intelligence. My path combines international context, academic
-                discipline, and a builder mindset.
+                From a young age, I&apos;ve been motivated to innovate and create
+                impact through technology. My early exposure to entrepreneurship
+                ignited my ambition, and since then, I have aimed to design
+                products that enrich people&apos;s lives. I want to keep building
+                products that are useful, durable, and meaningful.
               </p>
-
-              <div className="mt-8 space-y-3">
-                {storyPoints.map((point) => (
-                  <div
-                    key={point}
-                    className="rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-7 text-slate-200"
-                  >
-                    {point}
-                  </div>
-                ))}
-              </div>
+              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
+                With a strong foundation in computer science and a clear focus on
+                AI, I&apos;ve become most interested in the space where technical
+                depth meets real product value. I&apos;m drawn to work that requires
+                ownership, curiosity, and a willingness to step outside a narrow
+                job description. Whether I&apos;m building AI systems, analytics
+                tools, or user-facing products, I bring a mix of engineering
+                rigor, strategic thinking, and a genuine interest in creating
+                technology that people find useful.
+              </p>
+              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
+                What sets my perspective apart is that I do not think about
+                technology in isolation. I think about how it behaves when
+                conditions are imperfect, users are real, and the stakes
+                actually matter. That mindset pushes me to build systems that
+                are not only intelligent, but dependable, usable, and grounded
+                in reality.
+              </p>
             </div>
 
             <div className="grid gap-6">
               <div className="mx-auto w-full max-w-xl rounded-[32px] border border-white/10 bg-slate-950/60 p-3">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/80">
+                <div className="relative aspect-[4/5.7] overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/80">
                   <Image
                     priority
                     src="/about-profile.jpg"
