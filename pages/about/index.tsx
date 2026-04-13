@@ -81,8 +81,9 @@ export default function About() {
                   maybe I could be the one to make them better.
                 </p>
                 <p>
-                  When I was in high school, I built an app called Trainme. It
-                  connected tennis coaches with students. It was not good. The UI
+                  When I was in high school, I built an app that let people
+                  exchange CDs and PS4 games, a way to try out other games
+                  without buying them. It was not good. The UI
                   was rough, the code was messy, and almost no one used it. But
                   someone did. And the moment a stranger opened something I made
                   and actually tried to use it, that was it. I knew what I wanted
