@@ -6,7 +6,7 @@ export const siteConfig = {
   domain: 'yassinekraiem.com',
   siteUrl: 'https://yassinekraiem.com',
   location: 'New York / Washington, D.C. / Global',
-  email: 'yassinekraiem08@gmail.com',
+  email: 'yassine.kraiem@columbia.edu',
   github: 'https://github.com/Yassinekraiem08',
   linkedin: 'https://www.linkedin.com/in/yassinekraiem/',
   medium: 'https://medium.com/@yassinekraiem08',

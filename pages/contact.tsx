@@ -20,7 +20,6 @@ export default function Contact() {
           <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="space-y-6">
               <SectionHeading
-                eyebrow="Contact"
                 title="Let's Connect"
               />
               <p className="max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
