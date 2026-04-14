@@ -172,8 +172,8 @@ export default function Home() {
               </div>
 
               <div className="mx-auto w-full max-w-[420px]">
-                <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-sky-400/10 via-white/[0.03] to-transparent p-4">
-                  <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] border border-white/10 bg-slate-950/50">
+                <div className="rounded-[28px] border border-slate-800/80 bg-slate-950/75 p-4">
+                  <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] border border-white/10 bg-slate-950/80">
                       <Image
                         src="/profile-home.jpg"
                         alt="Yassine Kraiem portrait"
@@ -181,7 +181,7 @@ export default function Home() {
                         className="object-cover object-[center_18%]"
                         sizes="(min-width: 1024px) 30vw, 90vw"
                       />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
                   </div>
                 </div>
               </div>

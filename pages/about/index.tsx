@@ -110,11 +110,12 @@ export default function About() {
                   system solved it under real conditions, not just clean ones.
                 </p>
                 <p>
-                  Now I&apos;m heading to Columbia to go deeper, to close the gap
-                  between what AI can do in a lab and what it can do in the
-                  world. But honestly, the destination was never a school or a
-                  title. It&apos;s the feeling I got in Tunis when that stranger
-                  opened my app. I&apos;m still chasing that.
+                  The problems I want to solve are larger than anything I&apos;ve
+                  built so far. I know that. But every system I&apos;ve shipped
+                  has taught me something the last one couldn&apos;t, how to think
+                  under pressure, how to build for people I&apos;ll never meet,
+                  how to make something hold up long after I&apos;ve stopped
+                  watching it. There is more to build. And I intend to.
                 </p>
               </div>
             </div>
