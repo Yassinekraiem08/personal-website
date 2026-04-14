@@ -16,7 +16,7 @@ export default function About() {
         />
       </Head>
       <main>
-        <PageContentBox className="border-slate-800/80 bg-slate-950/75 shadow-none backdrop-blur-none">
+        <PageContentBox variant="dark">
           <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
             <div>
               <h1 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">

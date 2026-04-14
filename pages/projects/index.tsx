@@ -37,7 +37,7 @@ export default function Projects() {
         />
       </Head>
       <main>
-        <PageContentBox className="border-slate-800/80 bg-slate-950/75 shadow-none backdrop-blur-none">
+        <PageContentBox variant="dark">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="w-full max-w-md">
               <label htmlFor="project-search" className="sr-only">

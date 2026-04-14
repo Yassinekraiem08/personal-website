@@ -15,7 +15,7 @@ export default function Contact() {
         />
       </Head>
       <main>
-        <PageContentBox className="border-slate-800/80 bg-slate-950/75 shadow-none backdrop-blur-none">
+        <PageContentBox variant="dark">
           <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="space-y-6">
               <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
