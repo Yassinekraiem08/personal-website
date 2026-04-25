@@ -128,8 +128,8 @@ export default function Home() {
                     className="mt-4 w-full min-[1000px]:max-w-lg text-[17px] leading-[30px] text-slate-300"
                     style={{ textAlign: 'justify' }}
                   >
-                    I&apos;m a senior computer science student at Alma College
-                    building applications across AI and software engineering.
+                    I&apos;m a graduate student at Columbia University building
+                    applications across AI and software engineering.
                     My work focuses on turning ideas into systems that are not
                     just technically sound, but genuinely useful, reliable, and
                     impactful in practice — from AI-driven workflows and retrieval
