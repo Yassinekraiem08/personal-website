@@ -5,7 +5,7 @@ export const aboutContent: AboutEntry = {
     {
       type: 'paragraph',
       text:
-        'I am a computer science student building toward a long-term future in AI, robotics, and intelligent systems. The through-line in my work is clear: learn quickly, build seriously, and aim at problems with real leverage.',
+        'I am a graduate student at Columbia University building toward a long-term future in AI, robotics, and intelligent systems. The through-line in my work is clear: learn quickly, build seriously, and aim at problems with real leverage.',
     },
     {
       type: 'paragraph',
