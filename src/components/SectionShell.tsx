@@ -1,7 +1,5 @@
 import { HTMLAttributes, PropsWithChildren } from 'react';
 
-import { motion } from 'framer-motion';
-
 interface SectionShellProps
   extends PropsWithChildren,
     Omit<HTMLAttributes<HTMLElement>, 'className' | 'id'> {
@@ -29,15 +27,9 @@ export default function SectionShell({
 
   return (
     <section id={id} className={sectionClassName} {...props}>
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.55, ease: 'easeOut' }}
-        className="mx-auto w-full max-w-7xl"
-      >
+      <div className="mx-auto w-full max-w-7xl">
         {children}
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 export const starRadiusRange = 6;
 
 export interface StarryBackgroundProps {
@@ -38,24 +36,18 @@ export default function StarryBackground({ stars = [] }: StarryBackgroundProps) 
     <div className="pointer-events-none fixed inset-0 overflow-hidden">
       <div className="absolute inset-0 bg-grid-fade bg-[size:48px_48px] opacity-[0.06]" />
       {orbiters.map((orbiter, idx) => (
-        <motion.div
+        <div
           key={idx}
-          className={`absolute rounded-full ${orbiter.className}`}
-          animate={{ scale: [1, 1.08, 0.96, 1], opacity: [0.8, 1, 0.75, 0.8] }}
-          transition={{
-            duration: orbiter.duration,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+          className={`absolute rounded-full animate-orbiter ${orbiter.className}`}
+          style={{ animationDuration: `${orbiter.duration}s` }}
         />
       ))}
       {subtleStars.map(({ x, y, r, opacity }, idx) => (
-        <motion.div
+        <div
           key={`${x}_${y}_${idx}`}
-          className="absolute rounded-full bg-white"
+          className="absolute rounded-full bg-white animate-star-pulse"
           style={{ left: x, top: y, width: r, height: r, opacity: opacity * 0.55 }}
-          animate={{ opacity: [opacity * 0.25, opacity * 0.7, opacity * 0.25] }}
-          transition={{ duration: 4 + (idx % 5), repeat: Infinity, ease: 'easeInOut' }}
+          aria-hidden="true"
         />
       ))}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050816] to-transparent" />

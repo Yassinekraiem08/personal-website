@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,11 +11,7 @@ export default function ProjectShowcaseCard({
   priority = false,
 }: ProjectShowcaseCardProps) {
   return (
-    <motion.article
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="group overflow-hidden rounded-[24px] border border-slate-800/80 bg-slate-950/80"
-    >
+    <article className="group overflow-hidden rounded-[24px] border border-slate-800/80 bg-slate-950/80 transition-transform duration-200 ease-out hover:-translate-y-1.5">
       <div className="relative aspect-[16/7] overflow-hidden border-b border-white/10 bg-slate-950/70">
         <Image
           fill
@@ -81,6 +76,6 @@ export default function ProjectShowcaseCard({
           ) : null}
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

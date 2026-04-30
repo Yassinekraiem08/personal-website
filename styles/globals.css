@@ -74,3 +74,66 @@ a {
 .text-link:hover {
   color: #dbeafe;
 }
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-dot {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(24px);
+  }
+}
+
+@keyframes orbiter {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  65% {
+    opacity: 0.75;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes star-pulse {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out 0.42s both;
+}
+
+.animate-scroll-dot {
+  animation: scroll-dot 1.6s ease-in-out infinite;
+}
+
+.animate-orbiter {
+  animation: orbiter 16s ease-in-out infinite;
+}
+
+.animate-star-pulse {
+  animation: star-pulse 5s ease-in-out infinite;
+}

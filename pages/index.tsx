@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -42,7 +41,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{`${siteConfig.name} | AI Engineer and Systems Builder`}</title>
+        <title>{siteConfig.name}</title>
         <meta name="description" content={siteConfig.description} />
       </Head>
       <main>
@@ -87,12 +86,7 @@ export default function Home() {
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.42 }}
-              className="pointer-events-none absolute inset-x-0 bottom-32 z-[2] flex w-full items-center justify-center flex-col sm:bottom-10"
-            >
+            <div className="pointer-events-none absolute inset-x-0 bottom-32 z-[2] flex w-full animate-fade-in-up flex-col items-center justify-center sm:bottom-10">
               <div className="mt-5 inline-flex w-fit items-center justify-center gap-6 rounded-xl bg-[#181430]/90 px-4 py-2 text-base font-medium text-slate-100 shadow-glow lg:mt-10 lg:px-7 lg:py-3">
                 Try clicking screen!
               </div>
@@ -101,17 +95,13 @@ export default function Home() {
                 className="pointer-events-auto group mt-5 inline-flex w-fit items-center justify-center gap-6 rounded-xl bg-[#181430]/90 px-4 py-2 text-center text-slate-200 shadow-glow transition hover:text-white lg:mt-10 lg:px-7 lg:py-3"
               >
                 <span className="flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-white/80 p-2">
-                  <motion.span
-                    animate={{ y: [0, 24, 0] }}
-                    transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-                    className="mt-1 h-3 w-3 rounded-full bg-white"
-                  />
+                  <span className="mt-1 h-3 w-3 rounded-full bg-white animate-scroll-dot" />
                 </span>
                 <span className="text-xl font-medium tracking-[-0.03em] lg:text-2xl">
                   Scroll Down
                 </span>
               </Link>
-            </motion.div>
+            </div>
           </div>
         </SectionShell>
 

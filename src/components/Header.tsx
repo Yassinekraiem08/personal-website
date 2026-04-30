@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -141,12 +139,7 @@ export default function Header() {
         </div>
 
         {mobileOpen ? (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="mt-4 grid gap-2 border-t border-white/10 pt-4 sm:hidden"
-          >
+          <div className="mt-4 grid gap-2 border-t border-white/10 pt-4 sm:hidden">
             {navLinks.map((item) => (
               <Link
                 key={item.href}
@@ -184,7 +177,7 @@ export default function Header() {
                 <X />
               </Link>
             </div>
-          </motion.div>
+          </div>
         ) : null}
       </div>
     </header>
