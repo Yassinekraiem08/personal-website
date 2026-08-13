@@ -4,10 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
-import SectionHeading from '@/src/components/SectionHeading';
 import SectionShell from '@/src/components/SectionShell';
 import {
-  aboutContent,
   careerEntries,
   projectEntries,
   researchEntries,
@@ -161,11 +159,11 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mx-auto w-full max-w-[420px]">
+              <div className="mx-auto w-full max-w-[480px]">
                 <div className="rounded-[28px] border border-slate-800/80 bg-slate-950/75 p-4">
                   <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] border border-white/10 bg-slate-950/80">
                       <Image
-                        src="/profile-home.jpg"
+                        src="/homepic.PNG"
                         alt="Yassine Kraiem portrait"
                         fill
                         className="object-cover object-[center_18%]"

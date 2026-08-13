@@ -1,34 +1,3 @@
-export const aboutContent: AboutEntry = {
-  _id: 'about-local',
-  _type: 'about',
-  body: [
-    {
-      type: 'paragraph',
-      text:
-        'I am a graduate student at Columbia University building toward a long-term future in AI, robotics, and intelligent systems. The through-line in my work is clear: learn quickly, build seriously, and aim at problems with real leverage.',
-    },
-    {
-      type: 'paragraph',
-      text:
-        'This site is now driven by local content instead of a CMS, which makes it easier to shape the story carefully and update it directly as the portfolio evolves.',
-    },
-    {
-      type: 'heading',
-      level: 3,
-      text: 'Current direction',
-    },
-    {
-      type: 'list',
-      style: 'bullet',
-      items: [
-        'AI systems and practical automation',
-        'Software engineering with product instincts',
-        'A long-term path toward robotics and embodied intelligence',
-      ],
-    },
-  ],
-};
-
 export const careerEntries: CareerEntry[] = [
   {
     _id: 'career-recipeone',
