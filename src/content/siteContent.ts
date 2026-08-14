@@ -10,6 +10,8 @@ export const careerEntries: CareerEntry[] = [
     dateLabel: 'Jul 2025 — Jan 2026',
     startYear: 2025,
     endYear: 2026,
+    kind: '0→1 SaaS build',
+    impact: ['15+ entities', '30+ relational tables', '7,000+ ingredient records'],
     image: {
       src: '/profile-home.jpg',
       alt: 'RecipeOne',
@@ -28,6 +30,8 @@ export const careerEntries: CareerEntry[] = [
     dateLabel: 'May 2024 — Aug 2024',
     startYear: 2024,
     endYear: 2024,
+    kind: 'Software internship',
+    impact: ['Backend APIs', 'Frontend features', 'Restaurant operations'],
     image: {
       src: '/profile-home.jpg',
       alt: 'EAT PRO JAPAN',
@@ -46,6 +50,8 @@ export const careerEntries: CareerEntry[] = [
     dateLabel: 'Oct 2023 — Apr 2025',
     startYear: 2023,
     endYear: 2025,
+    kind: 'AI automation product',
+    impact: ['200+ users', '5,000+ leads', '80% less manual work'],
     image: {
       src: '/profile-home.jpg',
       alt: 'ListFlowAI',
@@ -64,6 +70,8 @@ export const careerEntries: CareerEntry[] = [
     dateLabel: '2022 — 2025',
     startYear: 2022,
     endYear: 2025,
+    kind: 'Teaching & mentorship',
+    impact: ['70+ students', '7 CS/math courses', 'Hands-on debugging'],
     image: {
       src: '/profile-home.jpg',
       alt: 'Alma College',
@@ -83,6 +91,10 @@ export const researchEntries = [
     subtitle: 'Research-Based Web Simulation Project',
     dateLabel: '2024',
     location: '',
+    kind: 'Simulation research',
+    impact: ['18% faster delivery', '12% lower energy use', 'Interactive analytics'],
+    whyItMatters:
+      'The project tested how autonomous delivery decisions change under weather, demand, and routing constraints instead of assuming ideal operating conditions.',
     description:
       'Built a web-based simulation modeling autonomous drone deliveries under dynamic weather and demand, capturing realistic last-mile logistics behavior. Designed adaptive route optimization and scheduling algorithms that reduced average delivery time by 18% and energy consumption by 12% compared with baseline heuristics, and developed interactive analytics dashboards to visualize fleet performance in real time.',
   },
@@ -95,6 +107,10 @@ export const researchEntries = [
     location: '',
     linkHref: '/pathfinding-poster-session.pdf',
     linkLabel: 'View poster',
+    kind: 'Path planning research',
+    impact: ['Dynamic uncertainty', 'Benchmark study', 'Poster presentation'],
+    whyItMatters:
+      'The work made path-planning tradeoffs visible: safer routes, faster replanning, and robustness when the map changes underneath the algorithm.',
     description:
       'Led undergraduate research on learning-augmented path planning under dynamic uncertainty, presenting the work in poster form through a benchmark-driven study of safety, efficiency, and robustness trade-offs. The project combined interactive visualization, algorithm analysis, and controlled experiments to evaluate how replanning frequency and heuristic design affect navigation performance in changing environments.',
   },
@@ -107,6 +123,10 @@ export const researchEntries = [
     location: '',
     linkHref: '/senior-thesis.pdf',
     linkLabel: 'View thesis',
+    kind: 'Senior thesis',
+    impact: ['Model predictive control', 'Human-aware navigation', 'Uncertainty'],
+    whyItMatters:
+      'Human-aware navigation has to reason about people, uncertainty, and constraints at the same time. This thesis focused on methods that stay reliable beyond clean demos.',
     description:
       'Built a thesis project focused on learning-augmented model predictive control for human-aware robot navigation, examining how predictive control, uncertainty, and social navigation constraints interact in dynamic environments. The work ties together autonomy, decision-making under uncertainty, and intelligent systems with an emphasis on methods that remain reliable beyond idealized settings.',
   },

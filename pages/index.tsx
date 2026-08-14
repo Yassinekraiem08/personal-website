@@ -2,6 +2,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import ProjectShowcaseCard from '@/src/components/ProjectShowcaseCard';
 import SectionShell from '@/src/components/SectionShell';
@@ -35,6 +36,7 @@ export default function Home() {
   const research = researchEntries;
   const featuredProjects = projects.slice(0, 3);
   const latestCareer = career.slice(0, 3);
+  const [openResearch, setOpenResearch] = useState<string | null>(null);
 
   return (
     <>
@@ -185,51 +187,60 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="experience">
+        <SectionShell id="experience" className="scroll-mt-20 pt-10 sm:pt-12">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
                 Work Experience
               </p>
             </div>
-            <Link
-              href={siteConfig.resumeHref}
-              target="_blank"
-              className="inline-flex rounded-full border border-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
-            >
-              View Resume
-            </Link>
           </div>
-          <div className="mt-10">
+          <div className="mt-12">
             {latestCareer.length ? (
-              <div className="grid gap-4 lg:grid-cols-3">
-                {latestCareer.map((item) => (
-                  <div
+              <div className="grid gap-5 lg:grid-cols-3">
+                {latestCareer.map((item, index) => (
+                  <article
                     key={item._id}
-                    className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
+                    className={`group flex min-h-[390px] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/72 transition duration-200 hover:-translate-y-1.5 hover:border-sky-300/25 ${
+                      index === 0 ? 'lg:shadow-glow' : ''
+                    }`}
                   >
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-5 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+                      <span>{item.kind || 'Experience'}</span>
+                      <span>{item.dateLabel || `${item.startYear} - ${item.endYear === 9999 ? 'Present' : item.endYear}`}</span>
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-5">
                       <div>
-                        <h3 className="font-display text-xl font-semibold text-white">
+                        <h3 className="font-display text-2xl font-semibold tracking-tight text-white">
                           {item.title}
                         </h3>
-                        <p className="mt-1 text-sm font-medium text-sky-200">
+                        <p className="mt-2 text-sm font-semibold text-sky-200">
                           {item.company}
                         </p>
-                        {item.department || item.team ? (
-                          <p className="mt-2 text-sm text-slate-400">
-                            {[item.department, item.team].filter(Boolean).join(' • ')}
-                          </p>
-                        ) : null}
+                        <p className="mt-2 text-sm text-slate-400">
+                          {[item.location, item.department, item.team].filter(Boolean).join(' • ')}
+                        </p>
                       </div>
-                      <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
-                        {item.dateLabel || `${item.startYear} - ${item.endYear === 9999 ? 'Present' : item.endYear}`}
-                      </p>
-                      <p className="text-sm leading-7 text-slate-300">
+
+                      {item.impact?.length ? (
+                        <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${item.company} impact`}>
+                          {item.impact.map((impact) => (
+                            <li
+                              key={impact}
+                              className="rounded-full border border-emerald-300/15 bg-emerald-300/[0.065] px-3 py-1.5 text-[11px] font-semibold text-emerald-100"
+                            >
+                              {impact}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+
+                      <p className="mt-auto pt-6 text-sm leading-7 text-slate-300">
                         {item.description}
                       </p>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             ) : (
@@ -240,7 +251,7 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="research">
+        <SectionShell id="research" className="scroll-mt-20 pt-10 sm:pt-12">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
@@ -248,38 +259,76 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {research.map((item) => (
               <article
                 key={item._id}
-                className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5"
+                className="group flex min-h-[390px] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/72 transition duration-200 hover:-translate-y-1.5 hover:border-sky-300/25"
               >
-                <div className="flex h-full flex-col gap-4">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-5 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  <span>{item.kind || 'Research'}</span>
+                  <span>{item.dateLabel}</span>
+                </div>
+
+                <div className="flex flex-1 flex-col p-5">
                   <div>
-                    <div className="flex flex-col gap-3">
-                      <div>
-                        <h3 className="font-display text-xl font-semibold text-white">
-                          {item.title}
-                        </h3>
-                        <p className="mt-1 text-sm font-medium text-sky-200">
-                          {item.institution}
-                        </p>
-                        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-400">
-                          <span>{item.subtitle}</span>
-                          {item.location ? <span>{item.location}</span> : null}
-                        </div>
-                      </div>
-                    </div>
+                    <h3 className="font-display text-2xl font-semibold tracking-tight text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm font-semibold text-sky-200">
+                      {item.institution}
+                    </p>
+                    <p className="mt-2 text-sm text-slate-400">
+                      {[item.subtitle, item.location].filter(Boolean).join(' • ')}
+                    </p>
                   </div>
-                  <p className="text-sm leading-7 text-slate-300">
+
+                  {item.impact?.length ? (
+                    <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${item.title} research impact`}>
+                      {item.impact.map((impact) => (
+                        <li
+                          key={impact}
+                          className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.065] px-3 py-1.5 text-[11px] font-semibold text-cyan-100"
+                        >
+                          {impact}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+
+                  <p className="pt-6 text-sm leading-7 text-slate-300">
                     {item.description}
                   </p>
+
+                  {item.whyItMatters ? (
+                    <div className="mt-5">
+                      <button
+                        type="button"
+                        aria-expanded={openResearch === item._id}
+                        onClick={() =>
+                          setOpenResearch(openResearch === item._id ? null : item._id)
+                        }
+                        className="flex w-full items-center justify-between rounded-[16px] border border-white/10 bg-white/[0.035] px-4 py-3 text-left text-sm font-semibold text-slate-100 transition hover:border-cyan-300/30 hover:bg-white/[0.055]"
+                      >
+                        <span>{openResearch === item._id ? 'Close details' : 'Why it matters'}</span>
+                        <span className="font-mono text-lg leading-none text-cyan-200" aria-hidden="true">
+                          {openResearch === item._id ? '-' : '+'}
+                        </span>
+                      </button>
+                      {openResearch === item._id ? (
+                        <p className="mt-3 rounded-[16px] border border-cyan-300/10 bg-cyan-300/[0.045] px-4 py-3 text-sm leading-6 text-slate-300">
+                          {item.whyItMatters}
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
+
                   {item.linkHref ? (
-                    <div className="pt-1">
+                    <div className="pt-5">
                       <Link
                         href={item.linkHref}
                         target="_blank"
-                        className="inline-flex rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+                        className="inline-flex rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/35 hover:text-white"
                       >
                         {item.linkLabel || 'View'}
                       </Link>

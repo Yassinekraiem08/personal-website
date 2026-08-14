@@ -18,6 +18,8 @@ declare global {
     description: string;
     endYear: number;
     image: Image;
+    impact?: string[];
+    kind?: string;
     location?: string;
     startYear: number;
     title: string;
