@@ -122,14 +122,18 @@ export const projectEntries: ProjectEntry[] = [
       current: 'autonomous-drone-delivery-simulation-platform',
     },
     startYear: 2025,
+    kind: 'Simulation & optimization',
     description:
       'Full-stack simulation platform for autonomous drone delivery under dynamic weather and demand, built for evaluation, benchmarking, and route optimization research.',
+    metrics: ['1,000+ scenarios', '18% faster delivery', '12% lower energy use'],
+    whyItMatters:
+      'Autonomous delivery systems have to perform under changing operational conditions, not static assumptions. This project made routing, scheduling, and environmental variability measurable.',
     tools: ['Python', 'React.js', 'Full-stack Systems', 'Simulation', 'Optimization'],
     mainImage: {
-      src: '/drone-delivery-logo.png',
+      src: '/drone-delivery-cover-v2.png',
       alt: 'Autonomous Drone Delivery Simulation Platform project cover',
-      aspectRatio: 1.7,
-      contain: true,
+      aspectRatio: 1.6,
+      contain: false,
     },
     body: [
       {
@@ -186,16 +190,20 @@ export const projectEntries: ProjectEntry[] = [
       current: 'text-to-sql-analytics-system',
     },
     startYear: 2026,
+    kind: 'LLM analytics',
     description:
       'LLM-powered analytics system that translates natural language into SQL, executes queries against relational data, and returns usable business insights.',
+    metrics: ['70% faster queries', 'Self-serve analytics', 'SQL validation'],
+    whyItMatters:
+      'Most analytics systems still depend on someone writing SQL by hand. This project turns natural language into structured database interaction without removing the rigor of relational systems.',
     codeLink: 'https://github.com/Yassinekraiem08/nl-to-sql-analytics-system',
     demoLink: 'https://querymind-demo.vercel.app/',
     tools: ['Python', 'SQLAlchemy', 'PostgreSQL', 'Pandas', 'Plotly', 'OpenAI API'],
     mainImage: {
-      src: '/querymind-logo.png',
+      src: '/text-to-sql-cover-v2.png',
       alt: 'Text-to-SQL Analytics System project cover',
-      aspectRatio: 1.185,
-      contain: true,
+      aspectRatio: 1.6,
+      contain: false,
     },
     body: [
       {
@@ -253,8 +261,12 @@ export const projectEntries: ProjectEntry[] = [
       current: 'rag-decision-support-system',
     },
     startYear: 2026,
+    kind: 'Retrieval systems',
     description:
       'Production-grade retrieval-augmented generation system for grounded question answering over private documents with hybrid retrieval, reranking, inline citations, and confidence-aware responses.',
+    metrics: ['1,600+ chunks', '0.78 Precision@3', '76% lower rerank latency'],
+    whyItMatters:
+      'Most LLM demos answer confidently whether the evidence is strong or weak. This system makes retrieval quality visible and keeps answers tied to source material.',
     codeLink: 'https://github.com/Yassinekraiem08/rag-decision-support-system',
     tools: [
       'Python',
@@ -266,10 +278,10 @@ export const projectEntries: ProjectEntry[] = [
       'GitHub Actions',
     ],
     mainImage: {
-      src: '/rag-logo.png',
+      src: '/rag-cover-v2.png',
       alt: 'RAG Decision Support System project cover',
-      aspectRatio: 1,
-      contain: true,
+      aspectRatio: 1.6,
+      contain: false,
     },
     body: [
       {
@@ -327,16 +339,20 @@ export const projectEntries: ProjectEntry[] = [
       current: 'ai-workflow-orchestrator',
     },
     startYear: 2026,
+    kind: 'AI automation',
     description:
       'Production-grade multi-agent system that autonomously triages logs, tickets, and emails, executes API actions, and replans when conditions change.',
+    metrics: ['96.7% task success', '1.9s avg latency', 'Human escalation'],
+    whyItMatters:
+      'Most AI systems stop at summarization. This system is built to execute decisions end-to-end under uncertainty, closer to the reliability required for real operational leverage.',
     codeLink: 'https://github.com/Yassinekraiem08/ai-workflow-orchestrator',
     demoLink: 'https://ai-workflow-orchestrator.vercel.app/',
     tools: ['Python', 'FastAPI', 'Redis', 'Celery', 'PostgreSQL', 'Docker', 'AWS ECS'],
     mainImage: {
-      src: '/aiworkflow-logo.png',
+      src: '/ai-workflow-cover-v2.png',
       alt: 'AI Workflow Orchestrator project cover',
-      aspectRatio: 1,
-      contain: true,
+      aspectRatio: 1.6,
+      contain: false,
     },
     body: [
       {
@@ -394,16 +410,20 @@ export const projectEntries: ProjectEntry[] = [
       current: 'map-pathfinding-visualizer',
     },
     startYear: 2024,
+    kind: 'Algorithm visualization',
     description:
       'Interactive algorithm visualization platform for analyzing pathfinding behavior under dynamic obstacles, uncertain map conditions, and changing search constraints.',
+    metrics: ['A* / Dijkstra / BFS', '17% higher success', '7% runtime overhead'],
+    whyItMatters:
+      'Most pathfinding demos show static shortest paths. This system makes algorithm behavior visible under changing conditions, closer to how real navigation works.',
     codeLink: 'https://github.com/Yassinekraiem08/Map-pathfinding-visualizer',
     demoLink: 'https://map-pathfinding-visualizer.vercel.app/',
     tools: ['React.js', 'D3.js', 'Python', 'JavaScript', 'Git/GitHub'],
     mainImage: {
-      src: '/pathfinding-logo.png',
+      src: '/pathfinding-cover-v2.png',
       alt: 'Map Pathfinding Visualizer project cover',
-      aspectRatio: 1,
-      contain: true,
+      aspectRatio: 1.6,
+      contain: false,
     },
     body: [
       {
@@ -453,7 +473,3 @@ export const projectEntries: ProjectEntry[] = [
     ],
   },
 ];
-
-export function getProjectBySlug(slug: string) {
-  return projectEntries.find((project) => project.slug.current === slug) || null;
-}

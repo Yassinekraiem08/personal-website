@@ -54,7 +54,7 @@ export default function About() {
                 <div className="relative aspect-[4/5.7] overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/80">
                   <Image
                     priority
-                    src="/about-profile.jpg"
+                    src="/about-profile-v2.png"
                     alt="Yassine Kraiem"
                     fill
                     className="object-cover object-[center_22%]"

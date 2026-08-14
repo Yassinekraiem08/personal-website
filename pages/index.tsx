@@ -84,37 +84,43 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-32 z-[2] flex w-full animate-fade-in-up flex-col items-center justify-center sm:bottom-10">
-              <div className="mt-5 inline-flex w-fit items-center justify-center gap-6 rounded-xl bg-[#181430]/90 px-4 py-2 text-base font-medium text-slate-100 shadow-glow lg:mt-10 lg:px-7 lg:py-3">
-                Try clicking screen!
+            <div className="pointer-events-none absolute inset-x-0 bottom-24 z-[2] flex w-full animate-fade-in-up items-center justify-center px-6 sm:bottom-8">
+              <div className="pointer-events-auto flex w-full max-w-[420px] flex-col gap-2 rounded-[28px] border border-white/10 bg-slate-950/65 p-2 shadow-glow backdrop-blur-xl sm:w-auto sm:max-w-none sm:flex-row">
+                <div className="inline-flex items-center justify-center gap-2.5 rounded-full border border-sky-300/15 bg-white/[0.045] px-4 py-3 text-sm font-semibold text-slate-200">
+                  <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-300 opacity-45" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-sky-200" />
+                  </span>
+                  Click the screen
+                </div>
+                <Link
+                  href="#introduction"
+                  className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-4 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100"
+                >
+                  <span className="flex h-7 w-5 items-start justify-center rounded-full border-2 border-slate-950/80 p-1" aria-hidden="true">
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-950 transition group-hover:translate-y-2" />
+                  </span>
+                  Scroll down
+                  <span className="transition group-hover:translate-y-0.5" aria-hidden="true">
+                    ↓
+                  </span>
+                </Link>
               </div>
-              <Link
-                href="#introduction"
-                className="pointer-events-auto group mt-5 inline-flex w-fit items-center justify-center gap-6 rounded-xl bg-[#181430]/90 px-4 py-2 text-center text-slate-200 shadow-glow transition hover:text-white lg:mt-10 lg:px-7 lg:py-3"
-              >
-                <span className="flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-white/80 p-2">
-                  <span className="mt-1 h-3 w-3 rounded-full bg-white animate-scroll-dot" />
-                </span>
-                <span className="text-xl font-medium tracking-[-0.03em] lg:text-2xl">
-                  Scroll Down
-                </span>
-              </Link>
             </div>
           </div>
         </SectionShell>
 
-        <SectionShell id="introduction" className="pt-24 sm:pt-28">
+        <SectionShell id="introduction" className="pt-20 sm:pt-24">
           <div className="mx-auto max-w-7xl">
             <h2 className="text-[30px] font-black text-white xs:text-[40px] sm:text-[50px] md:text-[60px]">
               Hey, I&apos;m Yassine!
             </h2>
 
-            <div className="mt-6 flex items-center min-[1000px]:flex-row flex-col-reverse">
-              <div>
-                <div className="mt-4 max-w-3xl text-[17px] leading-[30px] text-slate-300">
+            <div className="mt-3 grid items-center gap-8 min-[1000px]:grid-cols-[minmax(0,1fr)_minmax(360px,480px)] min-[1000px]:gap-10">
+              <div className="min-w-0">
+                <div className="max-w-3xl text-[17px] leading-[30px] text-slate-300">
                   <p
-                    className="mt-4 w-full min-[1000px]:max-w-lg text-[17px] leading-[30px] text-slate-300"
-                    style={{ textAlign: 'justify' }}
+                    className="w-full min-[1000px]:max-w-xl text-[17px] leading-[30px] text-slate-300"
                   >
                     I&apos;m a graduate student at Columbia University building
                     applications across AI and software engineering.
@@ -160,16 +166,17 @@ export default function Home() {
               </div>
 
               <div className="mx-auto w-full max-w-[480px]">
-                <div className="rounded-[28px] border border-slate-800/80 bg-slate-950/75 p-4">
-                  <div className="relative aspect-[4/4.4] overflow-hidden rounded-[22px] border border-white/10 bg-slate-950/80">
-                      <Image
-                        src="/homepic.PNG"
-                        alt="Yassine Kraiem portrait"
-                        fill
-                        className="object-cover object-[center_18%]"
-                        sizes="(min-width: 1024px) 30vw, 90vw"
-                      />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
+                <div className="overflow-hidden rounded-[30px] border border-white/10 bg-slate-950/85 shadow-glow transition duration-300 hover:-translate-y-1 hover:rotate-0 min-[1000px]:rotate-[1.5deg]">
+                  <div className="relative aspect-[4/4.25] overflow-hidden bg-gradient-to-br from-sky-400/20 via-slate-950 to-indigo-500/20">
+                    <Image
+                      src="/homepic.PNG"
+                      alt="Yassine Kraiem portrait"
+                      fill
+                      className="object-cover object-[center_18%]"
+                      sizes="(min-width: 1024px) 30vw, 90vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:34px_34px] opacity-30 mix-blend-soft-light" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-transparent to-transparent" />
                   </div>
                 </div>
               </div>
