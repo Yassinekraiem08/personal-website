@@ -4,6 +4,7 @@ import { MantineProvider, MantineThemeOverride } from '@mantine/core';
 
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import Script from 'next/script';
 
 import StarryBackground from '@/src/components/StarryBackground';
 import Header from '@/src/components/Header';
@@ -75,6 +76,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-GHR3HZHWQX"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GHR3HZHWQX');
+        `}
+      </Script>
       <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
         <div>
           <StarryBackground />
