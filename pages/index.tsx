@@ -47,7 +47,7 @@ export default function Home() {
       <main>
         <SectionShell
           animateOnView={false}
-          className="relative flex h-screen items-center overflow-hidden pt-0"
+          className="relative flex min-h-[100svh] items-center overflow-hidden pt-0"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#131b33_0%,#070b17_58%,#04070f_100%)]" />
           <div className="absolute inset-x-0 top-10 h-56 bg-gradient-to-b from-sky-400/8 to-transparent blur-3xl" />
@@ -79,16 +79,16 @@ export default function Home() {
             lines={["Let's Immerse", 'With Yassine']}
             className="z-[1]"
           />
-          <div className="relative flex h-screen w-full flex-col">
-            <div className="mx-auto flex w-full max-w-7xl flex-1 items-start justify-center pt-14 text-center sm:pt-16">
+          <div className="relative flex min-h-[100svh] w-full flex-col">
+            <div className="mx-auto flex w-full max-w-7xl flex-1 items-start justify-center pt-16 text-center sm:pt-16">
               <div className="sr-only">
                 <h1>Let&apos;s Immerse With Yassine</h1>
               </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-24 z-[2] flex w-full animate-fade-in-up items-center justify-center px-6 sm:bottom-8">
-              <div className="pointer-events-auto flex w-full max-w-[420px] flex-col gap-2 rounded-[28px] border border-white/10 bg-slate-950/65 p-2 shadow-glow backdrop-blur-xl sm:w-auto sm:max-w-none sm:flex-row">
-                <div className="inline-flex items-center justify-center gap-2.5 rounded-full border border-sky-300/15 bg-white/[0.045] px-4 py-3 text-sm font-semibold text-slate-200">
+            <div className="pointer-events-none absolute inset-x-0 bottom-6 z-[2] flex w-full animate-fade-in-up items-center justify-center px-4 sm:bottom-8 sm:px-6">
+              <div className="pointer-events-auto flex w-full max-w-[350px] gap-2 rounded-[24px] border border-white/10 bg-slate-950/72 p-1.5 shadow-glow backdrop-blur-xl sm:w-auto sm:max-w-none sm:rounded-[28px] sm:p-2">
+                <div className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-sky-300/15 bg-white/[0.045] px-3 py-2.5 text-xs font-semibold text-slate-200 sm:flex-none sm:gap-2.5 sm:px-4 sm:py-3 sm:text-sm">
                   <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-300 opacity-45" />
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-sky-200" />
@@ -97,12 +97,12 @@ export default function Home() {
                 </div>
                 <Link
                   href="#introduction"
-                  className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-4 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100"
+                  className="group inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-white px-3 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-sky-100 sm:flex-none sm:gap-3 sm:px-4 sm:py-3 sm:text-sm"
                 >
-                  <span className="flex h-7 w-5 items-start justify-center rounded-full border-2 border-slate-950/80 p-1" aria-hidden="true">
+                  <span className="hidden h-7 w-5 items-start justify-center rounded-full border-2 border-slate-950/80 p-1 min-[380px]:flex" aria-hidden="true">
                     <span className="h-1.5 w-1.5 rounded-full bg-slate-950 transition group-hover:translate-y-2" />
                   </span>
-                  Scroll down
+                  <span className="whitespace-nowrap">Scroll down</span>
                   <span className="transition group-hover:translate-y-0.5" aria-hidden="true">
                     ↓
                   </span>
@@ -112,17 +112,17 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="introduction" className="pt-20 sm:pt-24">
+        <SectionShell id="introduction" className="scroll-mt-24 pt-12 sm:pt-20 lg:pt-24">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-[30px] font-black text-white xs:text-[40px] sm:text-[50px] md:text-[60px]">
+            <h2 className="text-[32px] font-black leading-tight text-white sm:text-[50px] md:text-[60px]">
               Hey, I&apos;m Yassine!
             </h2>
 
-            <div className="mt-3 grid items-center gap-8 min-[1000px]:grid-cols-[minmax(0,1fr)_minmax(360px,480px)] min-[1000px]:gap-10">
+            <div className="mt-5 grid items-center gap-8 min-[1000px]:grid-cols-[minmax(0,1fr)_minmax(360px,480px)] min-[1000px]:gap-10">
               <div className="min-w-0">
-                <div className="max-w-3xl text-[17px] leading-[30px] text-slate-300">
+                <div className="max-w-3xl text-[15px] leading-7 text-slate-300 sm:text-[17px] sm:leading-[30px]">
                   <p
-                    className="w-full min-[1000px]:max-w-xl text-[17px] leading-[30px] text-slate-300"
+                    className="w-full min-[1000px]:max-w-xl"
                   >
                     I&apos;m a graduate student at Columbia University building
                     applications across AI and software engineering.
@@ -148,7 +148,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-6 flex flex-wrap justify-center gap-4 sm:justify-start">
+                <div className="mt-6 flex flex-col gap-3 min-[420px]:flex-row sm:flex-wrap sm:justify-start sm:gap-4">
                   <Link
                     href={siteConfig.resumeHref}
                     target="_blank"
@@ -160,15 +160,15 @@ export default function Home() {
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex rounded-full border border-white/10 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
+                    className="inline-flex justify-center rounded-full border border-white/10 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-sky-300/35 hover:text-white"
                   >
                     About Me
                   </Link>
                 </div>
               </div>
 
-              <div className="mx-auto w-full max-w-[480px]">
-                <div className="overflow-hidden rounded-[30px] border border-white/10 bg-slate-950/85 shadow-glow transition duration-300 hover:-translate-y-1 hover:rotate-0 min-[1000px]:rotate-[1.5deg]">
+              <div className="mx-auto w-full max-w-[330px] sm:max-w-[420px] min-[1000px]:max-w-[480px]">
+                <div className="overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/85 shadow-glow transition duration-300 hover:-translate-y-1 hover:rotate-0 sm:rounded-[30px] min-[1000px]:rotate-[1.5deg]">
                   <div className="relative aspect-[4/4.25] overflow-hidden bg-gradient-to-br from-sky-400/20 via-slate-950 to-indigo-500/20">
                     <Image
                       src="/homepic.PNG"
@@ -187,32 +187,32 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="experience" className="scroll-mt-20 pt-10 sm:pt-12">
+        <SectionShell id="experience" className="scroll-mt-24 pt-8 sm:pt-12">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300/90 sm:text-base sm:tracking-[0.28em]">
                 Work Experience
               </p>
             </div>
           </div>
-          <div className="mt-12">
+          <div className="mt-8 sm:mt-12">
             {latestCareer.length ? (
               <div className="grid gap-5 lg:grid-cols-3">
                 {latestCareer.map((item, index) => (
                   <article
                     key={item._id}
-                    className={`group flex min-h-[390px] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/72 transition duration-200 hover:-translate-y-1.5 hover:border-sky-300/25 ${
+                    className={`group flex min-h-0 flex-col overflow-hidden rounded-[20px] border border-white/10 bg-slate-950/72 transition duration-200 hover:-translate-y-1.5 hover:border-sky-300/25 sm:min-h-[390px] sm:rounded-[24px] ${
                       index === 0 ? 'lg:shadow-glow' : ''
                     }`}
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-5 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400 sm:px-5 sm:py-4 sm:text-[11px] sm:tracking-[0.2em]">
                       <span>{item.kind || 'Experience'}</span>
                       <span>{item.dateLabel || `${item.startYear} - ${item.endYear === 9999 ? 'Present' : item.endYear}`}</span>
                     </div>
 
-                    <div className="flex flex-1 flex-col p-5">
+                    <div className="flex flex-1 flex-col p-4 sm:p-5">
                       <div>
-                        <h3 className="font-display text-2xl font-semibold tracking-tight text-white">
+                        <h3 className="font-display text-xl font-semibold tracking-tight text-white sm:text-2xl">
                           {item.title}
                         </h3>
                         <p className="mt-2 text-sm font-semibold text-sky-200">
@@ -224,7 +224,7 @@ export default function Home() {
                       </div>
 
                       {item.impact?.length ? (
-                        <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${item.company} impact`}>
+                        <ul className="mt-4 flex flex-wrap gap-2 sm:mt-6" aria-label={`${item.company} impact`}>
                           {item.impact.map((impact) => (
                             <li
                               key={impact}
@@ -236,7 +236,7 @@ export default function Home() {
                         </ul>
                       ) : null}
 
-                      <p className="mt-auto pt-6 text-sm leading-7 text-slate-300">
+                      <p className="pt-5 text-sm leading-7 text-slate-300 sm:mt-auto sm:pt-6">
                         {item.description}
                       </p>
                     </div>
@@ -251,28 +251,28 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="research" className="scroll-mt-20 pt-10 sm:pt-12">
+        <SectionShell id="research" className="scroll-mt-24 pt-8 sm:pt-12">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300/90 sm:text-base sm:tracking-[0.28em]">
                 Research
               </p>
             </div>
           </div>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:mt-12 lg:grid-cols-3">
             {research.map((item) => (
               <article
                 key={item._id}
-                className="group flex min-h-[390px] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/72 transition duration-200 hover:-translate-y-1.5 hover:border-sky-300/25"
+                className="group flex min-h-0 flex-col overflow-hidden rounded-[20px] border border-white/10 bg-slate-950/72 transition duration-200 hover:-translate-y-1.5 hover:border-sky-300/25 sm:min-h-[390px] sm:rounded-[24px]"
               >
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-5 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400 sm:px-5 sm:py-4 sm:text-[11px] sm:tracking-[0.2em]">
                   <span>{item.kind || 'Research'}</span>
                   <span>{item.dateLabel}</span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-5">
+                <div className="flex flex-1 flex-col p-4 sm:p-5">
                   <div>
-                    <h3 className="font-display text-2xl font-semibold tracking-tight text-white">
+                    <h3 className="font-display text-xl font-semibold tracking-tight text-white sm:text-2xl">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm font-semibold text-sky-200">
@@ -284,7 +284,7 @@ export default function Home() {
                   </div>
 
                   {item.impact?.length ? (
-                    <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${item.title} research impact`}>
+                    <ul className="mt-4 flex flex-wrap gap-2 sm:mt-6" aria-label={`${item.title} research impact`}>
                       {item.impact.map((impact) => (
                         <li
                           key={impact}
@@ -296,7 +296,7 @@ export default function Home() {
                     </ul>
                   ) : null}
 
-                  <p className="pt-6 text-sm leading-7 text-slate-300">
+                  <p className="pt-5 text-sm leading-7 text-slate-300 sm:pt-6">
                     {item.description}
                   </p>
 
@@ -343,7 +343,7 @@ export default function Home() {
         <SectionShell>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300/90 sm:text-base sm:tracking-[0.28em]">
                 Selected Projects
               </p>
             </div>
@@ -354,7 +354,7 @@ export default function Home() {
               Browse all projects
             </Link>
           </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 lg:grid-cols-3">
             {featuredProjects.length ? (
               featuredProjects.map((project, idx) => (
                 <ProjectShowcaseCard
@@ -374,7 +374,7 @@ export default function Home() {
         <SectionShell>
           <div className="mx-auto mt-8 max-w-3xl">
             <div className="mb-4 text-center">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300/90 sm:text-base">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300/90 sm:text-base sm:tracking-[0.28em]">
                 Awards & Honors
               </h3>
             </div>

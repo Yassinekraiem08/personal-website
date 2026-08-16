@@ -16,13 +16,13 @@ export default function ProjectShowcaseCard({
   const [detailsOpen, setDetailsOpen] = useState(false);
 
   return (
-    <article className="group flex min-h-[520px] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/78 transition duration-200 ease-out hover:-translate-y-1.5 hover:border-sky-300/25">
-      <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400 sm:px-6">
+    <article className="group flex min-h-0 flex-col overflow-hidden rounded-[20px] border border-white/10 bg-slate-950/78 transition duration-200 ease-out hover:-translate-y-1.5 hover:border-sky-300/25 sm:min-h-[520px] sm:rounded-[24px]">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400 sm:px-6 sm:py-4 sm:text-[11px] sm:tracking-[0.2em]">
         <span>{project.kind || 'Project'}</span>
         <span>{project.startYear}</span>
       </div>
 
-      <div className="relative mx-5 mt-5 aspect-[16/8] overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-sky-950/50 sm:mx-6">
+      <div className="relative mx-4 mt-4 aspect-[16/9] overflow-hidden rounded-[16px] border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-sky-950/50 sm:mx-6 sm:mt-5 sm:aspect-[16/8] sm:rounded-[18px]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(125,211,252,0.16),transparent_42%)]" />
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950/80 to-transparent" />
         <Image
@@ -37,9 +37,9 @@ export default function ProjectShowcaseCard({
         />
       </div>
 
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
+      <div className="flex flex-1 flex-col p-4 sm:p-6">
         <div>
-          <h3 className="font-display text-2xl font-semibold tracking-tight text-white">
+          <h3 className="font-display text-xl font-semibold tracking-tight text-white sm:text-2xl">
             {project.name}
           </h3>
           <p className="mt-3 text-sm leading-6 text-slate-300">
@@ -48,7 +48,7 @@ export default function ProjectShowcaseCard({
         </div>
 
         {metrics.length ? (
-          <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${project.name} outcomes`}>
+          <ul className="mt-4 flex flex-wrap gap-2 sm:mt-6" aria-label={`${project.name} outcomes`}>
             {metrics.map((metric) => (
               <li
                 key={metric}
@@ -60,8 +60,8 @@ export default function ProjectShowcaseCard({
           </ul>
         ) : null}
 
-        <div className="mt-auto pt-6">
-          <div className="mb-5 flex flex-wrap gap-2">
+        <div className="pt-5 sm:mt-auto sm:pt-6">
+          <div className="mb-4 flex flex-wrap gap-2 sm:mb-5">
             {project.tools.slice(0, 4).map((tool) => (
               <span
                 key={tool}
@@ -73,7 +73,7 @@ export default function ProjectShowcaseCard({
           </div>
 
           {project.whyItMatters ? (
-            <div className="mb-5">
+            <div className="mb-4 sm:mb-5">
               <button
                 type="button"
                 aria-expanded={detailsOpen}

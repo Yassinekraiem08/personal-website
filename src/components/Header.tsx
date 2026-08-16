@@ -32,9 +32,9 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full px-6 py-5 sm:px-16">
+    <header className="fixed top-0 z-50 w-full px-4 py-4 sm:px-8 sm:py-5 lg:px-16">
       <div
-        className={`mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border border-white/10 bg-slate-950/65 px-4 py-3 shadow-glow backdrop-blur-xl transition sm:px-6 sm:py-4 ${
+        className={`mx-auto flex w-full max-w-7xl flex-col items-stretch rounded-[28px] border border-white/10 bg-slate-950/72 px-3 py-3 shadow-glow backdrop-blur-xl transition sm:flex-row sm:items-center sm:justify-between sm:rounded-full sm:px-6 sm:py-4 ${
           scrolled ? 'bg-slate-950/88' : ''
         }`}
       >
@@ -50,8 +50,8 @@ export default function Header() {
                 sizes="36px"
               />
             </div>
-            <div className="hidden min-w-0 sm:block">
-              <p className="text-[18px] font-semibold tracking-[-0.02em] text-white">
+            <div className="min-w-0">
+              <p className="max-w-[190px] truncate text-[16px] font-semibold text-white sm:max-w-none sm:text-[18px]">
                 {siteConfig.name}
               </p>
             </div>
@@ -139,13 +139,13 @@ export default function Header() {
         </div>
 
         {mobileOpen ? (
-          <div className="mt-4 grid gap-2 border-t border-white/10 pt-4 sm:hidden">
+          <div className="mt-3 grid gap-2 border-t border-white/10 pt-3 sm:hidden">
             {navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 target={item.href === siteConfig.resumeHref ? '_blank' : undefined}
-                className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-slate-200"
+                className="rounded-2xl border border-white/8 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-200"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}

@@ -15,7 +15,7 @@ export default function SectionShell({
   id,
   ...props
 }: SectionShellProps) {
-  const sectionClassName = `relative px-6 py-10 sm:px-16 sm:py-16 ${className}`;
+  const sectionClassName = `relative px-4 py-8 sm:px-8 sm:py-12 lg:px-16 lg:py-16 ${className}`;
 
   if (!animateOnView) {
     return (

@@ -17,19 +17,19 @@ export default function About() {
       </Head>
       <main>
         <PageContentBox variant="dark">
-          <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr]">
+          <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:gap-10">
             <div>
-              <h1 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
                 Building intelligence that holds up in the real world.
               </h1>
-              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
+              <p className="mt-5 text-[15px] leading-7 text-slate-300 sm:mt-6 sm:text-lg sm:leading-8">
                 From a young age, I&apos;ve been motivated to innovate and create
                 impact through technology. My early exposure to entrepreneurship
                 ignited my ambition, and since then, I have aimed to design
                 products that enrich people&apos;s lives. I want to keep building
                 products that are useful, durable, and meaningful.
               </p>
-              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
+              <p className="mt-5 text-[15px] leading-7 text-slate-300 sm:mt-6 sm:text-lg sm:leading-8">
                 With a strong foundation in computer science and a clear focus on
                 AI, I&apos;ve become most interested in the space where technical
                 depth meets real product value. I&apos;m drawn to work that requires
@@ -39,7 +39,7 @@ export default function About() {
                 rigor, strategic thinking, and a genuine interest in creating
                 technology that people find useful.
               </p>
-              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">
+              <p className="mt-5 text-[15px] leading-7 text-slate-300 sm:mt-6 sm:text-lg sm:leading-8">
                 What sets my perspective apart is that I do not think about
                 technology in isolation. I think about how it behaves when
                 conditions are imperfect, users are real, and the stakes
@@ -50,8 +50,8 @@ export default function About() {
             </div>
 
             <div className="grid gap-6">
-              <div className="mx-auto w-full max-w-xl rounded-[32px] border border-white/10 bg-slate-950/60 p-3">
-                <div className="relative aspect-[4/5.7] overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/80">
+              <div className="mx-auto w-full max-w-sm rounded-[24px] border border-white/10 bg-slate-950/60 p-2 sm:max-w-xl sm:rounded-[32px] sm:p-3">
+                <div className="relative aspect-[4/5.7] overflow-hidden rounded-[20px] border border-white/10 bg-slate-950/80 sm:rounded-[26px]">
                   <Image
                     priority
                     src="/about-profile-v2.png"
@@ -66,12 +66,12 @@ export default function About() {
             </div>
           </div>
 
-          <div className="mt-14">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-300/90 sm:text-base">
+          <div className="mt-10 sm:mt-14">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300/90 sm:text-base sm:tracking-[0.24em]">
               The Deeper Story
             </h2>
-            <div className="mt-8 rounded-[28px] border border-white/10 bg-slate-950/40 p-6 sm:p-8">
-              <div className="space-y-6 text-base leading-8 text-slate-300 sm:text-lg">
+            <div className="mt-6 rounded-[22px] border border-white/10 bg-slate-950/40 p-4 sm:mt-8 sm:rounded-[28px] sm:p-8">
+              <div className="space-y-5 text-[15px] leading-7 text-slate-300 sm:space-y-6 sm:text-lg sm:leading-8">
                 <p>
                   I grew up in Tunis. Not in a place with much of a tech scene -
                   there was no startup culture,

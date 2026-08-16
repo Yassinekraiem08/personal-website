@@ -16,7 +16,7 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
             return (
               <h3
                 key={index}
-                className="mt-8 font-display text-2xl font-semibold tracking-tight text-sky-100"
+                className="mt-7 font-display text-xl font-semibold tracking-tight text-sky-100 sm:mt-8 sm:text-2xl"
               >
                 {block.text}
               </h3>
@@ -26,7 +26,7 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
           return (
             <h2
               key={index}
-              className="mt-10 font-display text-3xl font-semibold tracking-tight text-white"
+              className="mt-9 font-display text-2xl font-semibold leading-tight tracking-tight text-white sm:mt-10 sm:text-3xl"
             >
               {block.text}
             </h2>
@@ -35,7 +35,7 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
 
         if (block.type === 'paragraph') {
           return (
-            <p key={index} className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
+            <p key={index} className="mt-4 text-[15px] leading-7 text-slate-300 sm:mt-5 sm:text-lg sm:leading-8">
               {block.text}
             </p>
           );
@@ -45,13 +45,13 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
           const ListTag = block.style === 'number' ? 'ol' : 'ul';
           const listClassName =
             block.style === 'number'
-              ? 'my-6 list-decimal space-y-3 pl-6 text-slate-300'
-              : 'my-6 list-disc space-y-3 pl-6 text-slate-300';
+              ? 'my-5 list-decimal space-y-2.5 pl-5 text-[15px] text-slate-300 sm:my-6 sm:space-y-3 sm:pl-6 sm:text-base'
+              : 'my-5 list-disc space-y-2.5 pl-5 text-[15px] text-slate-300 sm:my-6 sm:space-y-3 sm:pl-6 sm:text-base';
 
           return (
             <ListTag key={index} className={listClassName}>
               {block.items.map((item) => (
-                <li key={item} className="pl-1 leading-8">
+                <li key={item} className="pl-1 leading-7 sm:leading-8">
                   {item}
                 </li>
               ))}
@@ -61,10 +61,10 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
 
         if (block.type === 'quote') {
           const className = block.halfWidth
-            ? `my-8 w-full rounded-[24px] border border-sky-300/15 bg-sky-300/[0.06] px-6 py-6 text-base leading-7 text-slate-100 lg:w-[48%] ${
+            ? `my-6 w-full rounded-[20px] border border-sky-300/15 bg-sky-300/[0.06] px-4 py-4 text-[15px] leading-7 text-slate-100 sm:my-8 sm:rounded-[24px] sm:px-6 sm:py-6 sm:text-base lg:w-[48%] ${
                 block.floatRight ? 'lg:float-right lg:ml-6' : 'lg:float-left lg:mr-6'
               }`
-            : 'my-8 rounded-[28px] border border-sky-300/15 bg-sky-300/[0.06] px-6 py-6 text-lg leading-8 text-slate-100';
+            : 'my-6 rounded-[22px] border border-sky-300/15 bg-sky-300/[0.06] px-4 py-4 text-base leading-7 text-slate-100 sm:my-8 sm:rounded-[28px] sm:px-6 sm:py-6 sm:text-lg sm:leading-8';
 
           return (
             <blockquote key={index} className={className}>
@@ -78,8 +78,8 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
 
         const aspectRatio = block.image.aspectRatio || 1.4;
         const widthClassName = block.fullWidth
-          ? 'my-10 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-3'
-          : `my-8 w-full overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] p-3 lg:w-[48%] ${
+          ? 'my-8 overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.04] p-2 sm:my-10 sm:rounded-[28px] sm:p-3'
+          : `my-6 w-full overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.04] p-2 sm:my-8 sm:rounded-[24px] sm:p-3 lg:w-[48%] ${
               block.image.floatRight ? 'lg:float-right lg:ml-6' : 'lg:float-left lg:mr-6'
             }`;
 
@@ -87,7 +87,7 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
           <figure key={index} className={widthClassName}>
             <div
               className={`relative overflow-hidden ${
-                block.fullWidth ? 'rounded-[22px]' : 'rounded-[18px]'
+                block.fullWidth ? 'rounded-[18px] sm:rounded-[22px]' : 'rounded-[16px] sm:rounded-[18px]'
               }`}
               style={{ paddingTop: `${(1 / aspectRatio) * 100}%` }}
             >
@@ -104,7 +104,7 @@ export default function DocumentRenderer({ document }: DocumentRendererProps) {
               />
             </div>
             {block.image.caption ? (
-              <figcaption className="px-2 pb-1 pt-4 text-sm text-slate-400">
+              <figcaption className="px-2 pb-1 pt-3 text-xs leading-5 text-slate-400 sm:pt-4 sm:text-sm">
                 {block.image.caption}
               </figcaption>
             ) : null}

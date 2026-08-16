@@ -15,14 +15,14 @@ export default function SectionHeading({
 
   return (
     <div className={`max-w-3xl ${textAlign}`}>
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-sky-300/80">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-sky-300/80 sm:tracking-[0.32em]">
         {eyebrow}
       </p>
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+      <h2 className="font-display text-2xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+        <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-lg">
           {description}
         </p>
       ) : null}

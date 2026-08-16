@@ -37,24 +37,24 @@ export default function Resume() {
             <Link
               href={siteConfig.linkedin}
               target="_blank"
-              className="inline-flex rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+              className="inline-flex justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
             >
               Contact
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
             {achievementItems.map((item) => (
               <div
                 key={item}
-                className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm leading-7 text-slate-300"
+                className="rounded-[20px] border border-white/10 bg-white/[0.04] p-4 text-sm leading-7 text-slate-300 sm:rounded-[24px] sm:p-5"
               >
                 {item}
               </div>
             ))}
           </div>
 
-          <div className="mt-14 grid gap-14 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="mt-10 grid gap-10 sm:mt-14 sm:gap-14 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
               <SectionHeading
                 eyebrow="Experience"
@@ -65,7 +65,7 @@ export default function Resume() {
                   career.map((item) => (
                     <article
                       key={item._id}
-                      className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
+                      className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4 sm:rounded-[28px] sm:p-6"
                     >
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div className="flex items-start gap-4">
@@ -79,7 +79,7 @@ export default function Resume() {
                             />
                           </div>
                           <div>
-                            <h2 className="font-display text-2xl font-semibold text-white">
+                            <h2 className="font-display text-xl font-semibold text-white sm:text-2xl">
                               {item.title}
                             </h2>
                             <p className="mt-1 text-sm font-medium text-sky-200">
@@ -97,7 +97,7 @@ export default function Resume() {
                             ) : null}
                           </div>
                         </div>
-                        <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
+                        <p className="text-xs uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.22em]">
                           {item.dateLabel || `${item.startYear} - ${item.endYear === 9999 ? 'Present' : item.endYear}`}
                         </p>
                       </div>
@@ -125,7 +125,7 @@ export default function Resume() {
                     education.map((item) => (
                       <article
                         key={item._id}
-                        className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
+                        className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4 sm:rounded-[28px] sm:p-6"
                       >
                         <div className="flex items-start gap-4">
                           <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
@@ -138,10 +138,10 @@ export default function Resume() {
                             />
                           </div>
                           <div className="min-w-0">
-                            <h2 className="font-display text-xl font-semibold text-white">
+                            <h2 className="font-display text-lg font-semibold text-white sm:text-xl">
                               {item.school}
                             </h2>
-                            <p className="mt-1 text-sm font-medium text-sky-200">
+                            <p className="mt-1 text-sm font-medium leading-6 text-sky-200">
                               {item.major} • {item.degree}
                             </p>
                             <p className="mt-2 text-sm text-slate-400">
@@ -162,11 +162,11 @@ export default function Resume() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-sky-500/10 to-emerald-400/5 p-6">
-                <p className="text-xs uppercase tracking-[0.26em] text-slate-300">
+              <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-sky-500/10 to-emerald-400/5 p-4 sm:rounded-[28px] sm:p-6">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-300 sm:tracking-[0.26em]">
                   Snapshot
                 </p>
-                <p className="mt-4 text-lg leading-8 text-white">
+                <p className="mt-4 text-base leading-7 text-white sm:text-lg sm:leading-8">
                   The pattern across my work is consistent: learn aggressively,
                   take ownership early, and build toward systems that combine
                   intelligence, engineering, and practical impact.

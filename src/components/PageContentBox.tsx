@@ -16,9 +16,9 @@ export default function PageContentBox({
       : 'border border-white/10 bg-white/[0.04] shadow-glow backdrop-blur-xl';
 
   return (
-    <section className="relative px-5 pb-16 pt-28 sm:px-8 sm:pt-32">
+    <section className="relative px-4 pb-12 pt-24 sm:px-8 sm:pb-16 sm:pt-32">
       <div
-        className={`mx-auto w-full max-w-6xl rounded-[32px] p-6 sm:p-10 ${surfaceClassName} ${className}`}
+        className={`mx-auto w-full max-w-6xl rounded-[24px] p-4 sm:rounded-[32px] sm:p-10 ${surfaceClassName} ${className}`}
       >
         {children}
       </div>

@@ -16,12 +16,12 @@ export default function Contact() {
       </Head>
       <main>
         <PageContentBox variant="dark">
-          <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr]">
-            <div className="space-y-6">
-              <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+            <div className="space-y-5 sm:space-y-6">
+              <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
                 Let&apos;s Connect
               </h1>
-              <p className="max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
+              <p className="max-w-xl text-[15px] leading-7 text-slate-300 sm:text-lg sm:leading-8">
                 Thanks for stopping by - I appreciate you taking the time to
                 visit my site. I welcome your feedback, questions, and
                 suggestions. If you have a
@@ -43,8 +43,8 @@ export default function Contact() {
                 . Don&apos;t hesitate to reach out. Thanks again for your
                 interest, and I look forward to hearing from you!
               </p>
-              <div className="rounded-[28px] border border-sky-300/15 bg-gradient-to-br from-sky-400/10 to-transparent p-6">
-                <p className="text-xs uppercase tracking-[0.26em] text-slate-300">
+              <div className="rounded-[22px] border border-sky-300/15 bg-gradient-to-br from-sky-400/10 to-transparent p-4 sm:rounded-[28px] sm:p-6">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-300 sm:tracking-[0.26em]">
                   Email
                 </p>
                 <Link
@@ -57,8 +57,8 @@ export default function Contact() {
             </div>
 
             <div className="lg:pt-16">
-              <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 sm:p-7">
-                <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
+              <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 sm:rounded-[28px] sm:p-7">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-400 sm:tracking-[0.26em]">
                   Find Me Online
                 </p>
                 <div className="mt-5 grid gap-3">
