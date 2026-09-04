@@ -86,7 +86,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-6 z-[2] flex w-full animate-fade-in-up items-center justify-center px-4 sm:bottom-8 sm:px-6">
+            <div className="pointer-events-none absolute inset-x-0 bottom-16 z-[2] flex w-full animate-fade-in-up items-center justify-center px-4 sm:bottom-20 sm:px-6 lg:bottom-24">
               <div className="pointer-events-auto flex w-full max-w-[350px] gap-2 rounded-[24px] border border-white/10 bg-slate-950/72 p-1.5 shadow-glow backdrop-blur-xl sm:w-auto sm:max-w-none sm:rounded-[28px] sm:p-2">
                 <div className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-sky-300/15 bg-white/[0.045] px-3 py-2.5 text-xs font-semibold text-slate-200 sm:flex-none sm:gap-2.5 sm:px-4 sm:py-3 sm:text-sm">
                   <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
@@ -112,7 +112,7 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell id="introduction" className="scroll-mt-24 pt-12 sm:pt-20 lg:pt-24">
+        <SectionShell id="introduction" className="scroll-mt-12 pt-12 sm:pt-20 lg:pt-24">
           <div className="mx-auto max-w-7xl">
             <h2 className="text-[32px] font-black leading-tight text-white sm:text-[50px] md:text-[60px]">
               Hey, I&apos;m Yassine!
